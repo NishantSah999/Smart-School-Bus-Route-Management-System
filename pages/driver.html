@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartBus — Driver Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style/driver.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/><path d="M4 11h16"/>
+          <circle cx="7.5" cy="17.5" r="0.4"/><circle cx="16.5" cy="17.5" r="0.4"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="name">SmartBus</div>
+        <div class="sub">School Transport System</div>
+      </div>
+    </div>
+
+    <nav class="menu">
+      <a class="nav-item" data-page="dashboard" href="/pages/dashboard.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg> Dashboard
+      </a>
+      <a class="nav-item" data-page="fleet" href="/pages/Fleet-Tracking.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg> Fleet Tracking
+      </a>
+      <a class="nav-item active" href="/pages/driver.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg> Driver Dashboard
+      </a>
+      <a class="nav-item" data-page="alerts" href="/pages/alerts.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg> Alerts
+      </a>
+    </nav>
+
+    <div class="sidebar-spacer"></div>
+
+    <div class="profile-card">
+      <img src="https://i.pravatar.cc/80?img=13" alt="Driver">
+      <div class="profile-meta">
+        <div class="pname" id="driver-name">Loading…</div>
+        <div class="prole">Driver</div>
+      </div>
+      <a class="logout-link" href="#" data-logout>Sign out</a>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <div class="topbar">
+      <div>
+        <h1>Driver Dashboard</h1>
+        <p class="welcome" id="driver-sub">Loading your assigned bus…</p>
+      </div>
+      <div class="top-actions">
+        <div class="icon-btn" id="conn-status" title="Connection status">
+          <span class="conn-dot" id="conn-dot"></span><span id="conn-text">CONNECTING</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Safety banner -->
+    <div class="safety-banner" id="safety-banner" hidden>
+      <div class="safety-title">⚠ DRIVER DROWSINESS DETECTED</div>
+      <div class="safety-sub">Bus: <b id="sb-bus">—</b> · Driver: <b id="sb-driver">—</b> · Time: <b id="sb-time">—</b></div>
+      <div class="safety-actions">
+        <button class="btn-ack" id="btn-ack">I'm awake — Acknowledge</button>
+        <span class="safety-countdown" id="safety-countdown"></span>
+      </div>
+    </div>
+
+    <!-- SOS overlay -->
+    <div class="sos-overlay" id="sos-overlay" hidden>
+      <div class="sos-card">
+        <div class="sos-emoji">🚨</div>
+        <div class="sos-title">EMERGENCY SOS ACTIVE</div>
+        <div class="sos-sub">Location &amp; driver details sent to the school and emergency contacts.</div>
+        <button class="btn-cancel-sos" id="btn-cancel-sos">Cancel (false alarm)</button>
+      </div>
+    </div>
+
+    <div class="grid-2">
+
+      <!-- LEFT: Camera + detection -->
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h3>Driver Safety Monitor</h3>
+            <p>Camera-based drowsiness detection (assistance system)</p>
+          </div>
+          <button class="btn-ghost" id="btn-camera">Start Camera</button>
+        </div>
+        <div class="cam-box" id="cam-box">
+          <video id="cam-video" autoplay muted playsinline hidden></video>
+          <canvas id="cam-canvas" hidden></canvas>
+          <div class="cam-placeholder" id="cam-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <div>Start the camera to enable drowsiness monitoring.</div>
+          </div>
+        </div>
+        <div class="detect-state" id="detect-state">
+          <span class="dstate" data-state="NORMAL"><span class="dot green"></span>Normal</span>
+          <span class="dstate" data-state="SUSPECTED"><span class="dot yellow"></span>Suspected</span>
+          <span class="dstate" data-state="WARNING"><span class="dot orange"></span>Warning</span>
+          <span class="dstate" data-state="SOS"><span class="dot red"></span>SOS</span>
+        </div>
+        <p class="detect-note">Safety assistance only — this system is not a substitute for an alert driver. Always respond to warning sounds and use the manual emergency button when needed.</p>
+      </div>
+
+      <!-- RIGHT: Trip + bus info -->
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h3>Today's Trip</h3>
+            <p id="trip-sub">—</p>
+          </div>
+          <span class="status-chip" id="trip-status">—</span>
+        </div>
+
+        <div class="trip-hero">
+          <div class="th-block">
+            <div class="th-label">Bus</div>
+            <div class="th-value" id="trip-bus">—</div>
+          </div>
+          <div class="th-block">
+            <div class="th-label">Route</div>
+            <div class="th-value" id="trip-route">—</div>
+          </div>
+          <div class="th-block">
+            <div class="th-label">Speed</div>
+            <div class="th-value" id="trip-speed">0 km/h</div>
+          </div>
+          <div class="th-block">
+            <div class="th-label">Passengers</div>
+            <div class="th-value" id="trip-passengers">0</div>
+          </div>
+        </div>
+
+        <div class="trip-progress">
+          <div class="tp-label">Trip progress <span id="trip-progress-text">Not started</span></div>
+          <div class="tp-track"><div class="tp-fill" id="trip-progress-fill" style="width:0%"></div></div>
+        </div>
+
+        <div class="trip-actions">
+          <button class="btn-primary" id="btn-start-trip">▶ Start Trip</button>
+          <button class="btn-secondary" id="btn-end-trip" disabled>■ End Trip</button>
+          <button class="btn-sos" id="btn-sos">🚨 SOS</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student boarding -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h3>Boarding / Drop-off</h3>
+          <p>Mark students as boarded or dropped off on this trip</p>
+        </div>
+      </div>
+      <div class="boarding-tools">
+        <input type="text" id="board-search" placeholder="Search student…">
+        <button class="btn-ghost" id="btn-load-students">Refresh</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Student</th><th>Grade</th><th>Stop</th><th>Status</th><th style="text-align:center">Action</th></tr>
+          </thead>
+          <tbody id="board-tbody">
+            <tr><td colspan="5" style="text-align:center;color:#6b7280;padding:20px;">Loading students…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="../script/api.js"></script>
+<script src="../script/toast.js"></script>
+<script src="../script/auth.js"></script>
+<script src="../script/driver.js"></script>
+</body>
+</html>

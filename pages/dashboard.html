@@ -29,26 +29,26 @@
     </div>
 
     <nav class="menu">
-      <a class="nav-item active">
+      <a class="nav-item active" data-page="dashboard" href="/pages/dashboard.html">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
         Dashboard
       </a>
-      <a class="nav-item">
+      <a class="nav-item" data-page="fleet" href="/pages/Fleet-Tracking.html">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg>
         Fleet Tracking
       </a>
-      <a class="nav-item">
+      <a class="nav-item" href="/pages/driver.html">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
         Driver Dashboard
       </a>
-      <a class="nav-item">
+      <a class="nav-item" data-page="passenger" href="/pages/passenger.html">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         Passengers
       </a>
-      <a class="nav-item">
+      <a class="nav-item" data-page="alerts" href="/pages/alerts.html">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
         Alerts
-        <span class="nav-badge">4</span>
+        <span class="nav-badge" id="nav-alert-badge">4</span>
       </a>
       <a class="nav-item">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/><path d="M9 13h6M9 17h4"/></svg>
@@ -117,8 +117,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/><path d="M4 11h16"/></svg>
           </div>
         </div>
-        <div class="stat-value">12</div>
-        <div class="stat-foot">+2 from yesterday</div>
+        <div class="stat-value" id="stat-total-buses">—</div>
+        <div class="stat-foot" id="stat-buses-foot">Loading…</div>
       </div>
 
       <div class="stat-card accent-purple">
@@ -128,8 +128,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="10" rx="2"/><circle cx="7.5" cy="17.5" r="1.2"/><circle cx="16.5" cy="17.5" r="1.2"/></svg>
           </div>
         </div>
-        <div class="stat-value">9</div>
-        <div class="stat-foot muted">75% of total</div>
+        <div class="stat-value" id="stat-active-buses">—</div>
+        <div class="stat-foot muted" id="stat-active-buses-foot">Loading…</div>
       </div>
 
       <div class="stat-card">
@@ -139,8 +139,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
         </div>
-        <div class="stat-value">186</div>
-        <div class="stat-foot">+18 from yesterday</div>
+        <div class="stat-value" id="stat-total-passengers">—</div>
+        <div class="stat-foot" id="stat-passengers-foot">Loading…</div>
       </div>
 
       <div class="stat-card accent-purple">
@@ -150,8 +150,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg>
           </div>
         </div>
-        <div class="stat-value">8</div>
-        <div class="stat-foot muted">On going trips</div>
+        <div class="stat-value" id="stat-active-trips">—</div>
+        <div class="stat-foot muted" id="stat-trips-foot">Loading…</div>
       </div>
 
       <div class="stat-card accent-red">
@@ -161,8 +161,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg>
           </div>
         </div>
-        <div class="stat-value">3</div>
-        <div class="stat-foot danger">Requires attention</div>
+        <div class="stat-value" id="stat-safety-alerts">—</div>
+        <div class="stat-foot danger" id="stat-alerts-foot">Loading…</div>
       </div>
     </div>
 
@@ -229,43 +229,12 @@
           <a class="link" href="#">View All</a>
         </div>
 
-        <div class="alert-item bg-red">
-          <div class="alert-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg></div>
-          <div class="alert-body">
-            <div class="alert-title">Driver Drowsiness Detected</div>
-            <div class="alert-meta">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/></svg>
-              Bus 04 &nbsp;&bull;&nbsp; Ram Kumar
-            </div>
-          </div>
-          <div class="alert-time">2m ago</div>
+        <div id="recent-alerts">
+          <div class="sb-skeleton" style="height:52px;margin-bottom:10px;border-radius:12px;background:#eceef2;"></div>
+          <div class="sb-skeleton" style="height:52px;margin-bottom:10px;border-radius:12px;background:#eceef2;"></div>
         </div>
 
-        <div class="alert-item bg-orange">
-          <div class="alert-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
-          <div class="alert-body">
-            <div class="alert-title">High Speed Alert</div>
-            <div class="alert-meta">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/></svg>
-              Bus 07 &nbsp;&bull;&nbsp; 78 km/h
-            </div>
-          </div>
-          <div class="alert-time">8m ago</div>
-        </div>
-
-        <div class="alert-item bg-purple">
-          <div class="alert-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-          <div class="alert-body">
-            <div class="alert-title">Bus Approaching School</div>
-            <div class="alert-meta">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/></svg>
-              Bus 02 &nbsp;&bull;&nbsp; 500m away
-            </div>
-          </div>
-          <div class="alert-time">12m ago</div>
-        </div>
-
-        <a class="see-all" href="#">See all alerts &rarr;</a>
+        <a class="see-all" href="/pages/alerts.html">See all alerts &rarr;</a>
       </div>
     </div>
 
@@ -280,31 +249,9 @@
           <a class="link" href="#">View All</a>
         </div>
 
-        <div class="arrival-item">
-          <div class="arrival-ico icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/></svg></div>
-          <div class="arrival-body">
-            <div class="arrival-bus">Bus 04</div>
-            <div class="arrival-route">Route A &nbsp;&bull;&nbsp; 2.4 km away</div>
-          </div>
-          <div class="arrival-time"><div class="t">08:32 AM</div><div class="m">5 min</div></div>
-        </div>
-
-        <div class="arrival-item">
-          <div class="arrival-ico icon-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="10" rx="2"/><circle cx="7.5" cy="17.5" r="1.2"/><circle cx="16.5" cy="17.5" r="1.2"/></svg></div>
-          <div class="arrival-body">
-            <div class="arrival-bus">Bus 07</div>
-            <div class="arrival-route">Route B &nbsp;&bull;&nbsp; 1.1 km away</div>
-          </div>
-          <div class="arrival-time"><div class="t">08:35 AM</div><div class="m">8 min</div></div>
-        </div>
-
-        <div class="arrival-item">
-          <div class="arrival-ico icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/></svg></div>
-          <div class="arrival-body">
-            <div class="arrival-bus">Bus 02</div>
-            <div class="arrival-route">Route C &nbsp;&bull;&nbsp; 500 m away</div>
-          </div>
-          <div class="arrival-time"><div class="t">08:37 AM</div><div class="m">10 min</div></div>
+        <div id="next-arrivals">
+          <div class="sb-skeleton" style="height:44px;margin-bottom:10px;border-radius:12px;background:#eceef2;"></div>
+          <div class="sb-skeleton" style="height:44px;margin-bottom:10px;border-radius:12px;background:#eceef2;"></div>
         </div>
       </div>
 
@@ -319,20 +266,20 @@
           <svg width="170" height="170" viewBox="0 0 170 170">
             <circle cx="85" cy="85" r="68" fill="none" stroke="#eceef2" stroke-width="20"/>
             <circle cx="85" cy="85" r="68" fill="none" stroke="#22c55e" stroke-width="20"
-              stroke-dasharray="320.4 427.2" stroke-dashoffset="0" transform="rotate(-90 85 85)" stroke-linecap="round"/>
+              stroke-dasharray="0 427.2" stroke-dashoffset="0" transform="rotate(-90 85 85)" stroke-linecap="round"/>
             <circle cx="85" cy="85" r="68" fill="none" stroke="#8b5cf6" stroke-width="20"
-              stroke-dasharray="68.3 427.2" stroke-dashoffset="-320.4" transform="rotate(-90 85 85)" stroke-linecap="round"/>
+              stroke-dasharray="0 427.2" stroke-dashoffset="-320.4" transform="rotate(-90 85 85)" stroke-linecap="round"/>
             <circle cx="85" cy="85" r="68" fill="none" stroke="#ef4444" stroke-width="20"
-              stroke-dasharray="34.2 427.2" stroke-dashoffset="-388.7" transform="rotate(-90 85 85)" stroke-linecap="round"/>
+              stroke-dasharray="0 427.2" stroke-dashoffset="-388.7" transform="rotate(-90 85 85)" stroke-linecap="round"/>
           </svg>
           <div class="donut-center-label" style="margin-top:-108px; margin-bottom:70px;">
-            <div class="big">12</div>
+            <div class="big" id="fleet-total">—</div>
             <div class="small">Total</div>
           </div>
-          <div class="donut-legend">
-            <div class="donut-legend-row"><span class="sw" style="background:#22c55e"></span>Active <span class="val">9 (75%)</span></div>
-            <div class="donut-legend-row"><span class="sw" style="background:#8b5cf6"></span>Idle <span class="val">2 (16%)</span></div>
-            <div class="donut-legend-row"><span class="sw" style="background:#ef4444"></span>Maintenance <span class="val">1 (8%)</span></div>
+          <div class="donut-legend" id="fleet-legend">
+            <div class="donut-legend-row"><span class="sw" style="background:#22c55e"></span>Active <span class="val">—</span></div>
+            <div class="donut-legend-row"><span class="sw" style="background:#8b5cf6"></span>Idle <span class="val">—</span></div>
+            <div class="donut-legend-row"><span class="sw" style="background:#ef4444"></span>Maintenance <span class="val">—</span></div>
           </div>
         </div>
       </div>
@@ -406,6 +353,10 @@
   </main>
 </div>
 
+<script src="../script/api.js"></script>
+<script src="../script/toast.js"></script>
+<script src="../script/auth.js"></script>
 <script src="../script/script.js"></script>
+<script src="../script/dashboard.js"></script>
 </body>
 </html>

@@ -118,8 +118,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
             </div>
           </div>
-          <div class="stat-value">3</div>
-          <div class="stat-foot danger">Requires immediate action</div>
+          <div class="stat-value" id="stat-critical">—</div>
+          <div class="stat-foot danger" id="stat-critical-foot">Loading…</div>
         </div>
 
         <div class="stat-card accent-orange">
@@ -129,8 +129,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg>
             </div>
           </div>
-          <div class="stat-value">8</div>
-          <div class="stat-foot orange">Needs attention</div>
+          <div class="stat-value" id="stat-warning">—</div>
+          <div class="stat-foot orange" id="stat-warning-foot">Loading…</div>
         </div>
 
         <div class="stat-card accent-blue">
@@ -140,8 +140,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
             </div>
           </div>
-          <div class="stat-value">15</div>
-          <div class="stat-foot blue">General notifications</div>
+          <div class="stat-value" id="stat-info">—</div>
+          <div class="stat-foot blue" id="stat-info-foot">Loading…</div>
         </div>
 
         <div class="stat-card accent-green">
@@ -151,8 +151,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             </div>
           </div>
-          <div class="stat-value">12</div>
-          <div class="stat-foot">+3 from yesterday</div>
+          <div class="stat-value" id="stat-resolved">—</div>
+          <div class="stat-foot" id="stat-resolved-foot">Loading…</div>
         </div>
 
         <div class="stat-card">
@@ -162,8 +162,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg>
             </div>
           </div>
-          <div class="stat-value">26</div>
-          <div class="stat-foot muted">Today</div>
+          <div class="stat-value" id="stat-total">—</div>
+          <div class="stat-foot muted" id="stat-total-foot">Today</div>
         </div>
       </div>
 
@@ -180,220 +180,13 @@
           </div>
 
           <!-- Alert list -->
-          <div class="alert-list">
-            <!-- Alert 1 -->
-            <div class="alert-card critical">
-              <div class="alert-header">
-                <span class="alert-type critical">Critical</span>
-                <span class="alert-status unresolved">Unresolved</span>
-              </div>
-              <div class="alert-title">Driver Drowsiness Detected</div>
-              <div class="alert-desc">Drowsiness detected for more than 5 sec</div>
-              <div class="alert-meta-grid">
-                <div class="meta-item">
-                  <span class="meta-label">Bus & Driver</span>
-                  <span class="meta-value">Bus 04 · Ram Kumar</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Location</span>
-                  <span class="meta-value">Godar Road, Dhanusha</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Time</span>
-                  <span class="meta-value">2.4 km from school</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Severity</span>
-                  <span class="meta-value badge-critical">Critical</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Status</span>
-                  <span class="meta-value badge-unresolved">Unresolved</span>
-                </div>
-                <div class="meta-item actions">
-                  <button class="action-resolve">Resolve</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Alert 2 -->
-            <div class="alert-card warning">
-              <div class="alert-header">
-                <span class="alert-type warning">Warning</span>
-                <span class="alert-status unresolved">Unresolved</span>
-              </div>
-              <div class="alert-title">High Speed Alert</div>
-              <div class="alert-desc">Bus exceeded speed limit (78 km/h)</div>
-              <div class="alert-meta-grid">
-                <div class="meta-item">
-                  <span class="meta-label">Bus & Driver</span>
-                  <span class="meta-value">Bus 07 · Sita Thapa</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Location</span>
-                  <span class="meta-value">Janakpur Highway</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Time</span>
-                  <span class="meta-value">5.1 km from school</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Severity</span>
-                  <span class="meta-value badge-warning">Warning</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Status</span>
-                  <span class="meta-value badge-unresolved">Unresolved</span>
-                </div>
-                <div class="meta-item actions">
-                  <button class="action-resolve">Resolve</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Alert 3 -->
-            <div class="alert-card info">
-              <div class="alert-header">
-                <span class="alert-type info">Information</span>
-                <span class="alert-status unresolved">Unresolved</span>
-              </div>
-              <div class="alert-title">Bus Approaching School</div>
-              <div class="alert-desc">Bus is 500m away from school</div>
-              <div class="alert-meta-grid">
-                <div class="meta-item">
-                  <span class="meta-label">Bus & Driver</span>
-                  <span class="meta-value">Bus 02 · Mohan Thapa</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Location</span>
-                  <span class="meta-value">Main Street, Janakpur</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Time</span>
-                  <span class="meta-value">500 m from school</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Severity</span>
-                  <span class="meta-value badge-info">Information</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Status</span>
-                  <span class="meta-value badge-unresolved">Unresolved</span>
-                </div>
-                <div class="meta-item actions">
-                  <button class="action-resolve">Resolve</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Alert 4 -->
-            <div class="alert-card critical">
-              <div class="alert-header">
-                <span class="alert-type critical">Critical</span>
-                <span class="alert-status resolved">Resolved</span>
-              </div>
-              <div class="alert-title">Emergency Button Pressed</div>
-              <div class="alert-desc">Driver pressed emergency button</div>
-              <div class="alert-meta-grid">
-                <div class="meta-item">
-                  <span class="meta-label">Bus & Driver</span>
-                  <span class="meta-value">Bus 01 · Rajesh Singh</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Location</span>
-                  <span class="meta-value">Dhanusha Road</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Time</span>
-                  <span class="meta-value">6.0 km from school</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Severity</span>
-                  <span class="meta-value badge-critical">Critical</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Status</span>
-                  <span class="meta-value badge-resolved">Resolved</span>
-                </div>
-                <div class="meta-item actions">
-                  <span class="resolved-label">Resolved</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Alert 5 -->
-            <div class="alert-card warning">
-              <div class="alert-header">
-                <span class="alert-type warning">Warning</span>
-                <span class="alert-status unresolved">Unresolved</span>
-              </div>
-              <div class="alert-title">Sudden Braking Detected</div>
-              <div class="alert-desc">Sudden braking event detected</div>
-              <div class="alert-meta-grid">
-                <div class="meta-item">
-                  <span class="meta-label">Bus & Driver</span>
-                  <span class="meta-value">Bus 05 · Gita Shah</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Location</span>
-                  <span class="meta-value">Depot Road</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Time</span>
-                  <span class="meta-value">3.8 km from school</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Severity</span>
-                  <span class="meta-value badge-warning">Warning</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Status</span>
-                  <span class="meta-value badge-unresolved">Unresolved</span>
-                </div>
-                <div class="meta-item actions">
-                  <button class="action-resolve">Resolve</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Alert 6 -->
-            <div class="alert-card info">
-              <div class="alert-header">
-                <span class="alert-type info">Information</span>
-                <span class="alert-status resolved">Resolved</span>
-              </div>
-              <div class="alert-title">Maintenance Scheduled</div>
-              <div class="alert-desc">Scheduled maintenance due in 3 days</div>
-              <div class="alert-meta-grid">
-                <div class="meta-item">
-                  <span class="meta-label">Bus</span>
-                  <span class="meta-value">Bus 08</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Location</span>
-                  <span class="meta-value">Depot</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Time</span>
-                  <span class="meta-value">Due in 3 days</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Severity</span>
-                  <span class="meta-value badge-info">Information</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Status</span>
-                  <span class="meta-value badge-resolved">Resolved</span>
-                </div>
-                <div class="meta-item actions">
-                  <span class="resolved-label">Resolved</span>
-                </div>
-              </div>
-            </div>
+          <div class="alert-list" id="alert-list">
+            <div class="sb-skeleton" style="height:96px;margin-bottom:12px;border-radius:14px;background:#eceef2;"></div>
+            <div class="sb-skeleton" style="height:96px;margin-bottom:12px;border-radius:14px;background:#eceef2;"></div>
           </div>
 
           <div class="alert-pagination">
-            <span>Showing 1 to 6 of 26 alerts</span>
+            <span><span id="alert-range">Loading…</span>
             <div class="pagination">
               <button>&larr;</button>
               <button class="active">1</button>
@@ -425,7 +218,7 @@
                   stroke-dasharray="241.8 382.6" stroke-dashoffset="-140.8" transform="rotate(-90 80 80)" stroke-linecap="round"/>
               </svg>
               <div class="donut-center">
-                <div class="donut-total">26</div>
+                <div class="donut-total" id="donut-total">—</div>
                 <div class="donut-label">Total</div>
               </div>
             </div>
@@ -497,6 +290,10 @@
     </main>
   </div>
 
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="../script/api.js"></script>
+  <script src="../script/toast.js"></script>
+  <script src="../script/auth.js"></script>
   <script src="../script/alerts.js"></script>
 </body>
 </html>

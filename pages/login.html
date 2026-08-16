@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartBus — Sign In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style/login.css">
+</head>
+<body>
+  <div class="login-shell">
+    <div class="login-card">
+      <div class="login-brand">
+        <div class="login-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/><path d="M4 11h16"/>
+            <circle cx="7.5" cy="17.5" r="0.4"/><circle cx="16.5" cy="17.5" r="0.4"/>
+          </svg>
+        </div>
+        <div>
+          <div class="login-name">SmartBus</div>
+          <div class="login-sub">School Transport System</div>
+        </div>
+      </div>
+
+      <h1>Welcome back</h1>
+      <p class="login-hint">Sign in to your SmartBus account</p>
+
+      <form id="login-form" novalidate>
+        <label class="field">
+          <span>Email address</span>
+          <input type="email" id="email" placeholder="you@school.edu" autocomplete="username" required>
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" required>
+        </label>
+        <button type="submit" id="submit-btn" class="login-btn">Sign In</button>
+      </form>
+
+      <div class="login-error" id="login-error" hidden></div>
+
+      <div class="login-demo">
+        <div class="demo-title">Demo accounts</div>
+        <button class="demo-chip" data-email="admin@smartbus.test" data-pass="admin123">Super Admin</button>
+        <button class="demo-chip" data-email="manager@smartbus.test" data-pass="manager123">Manager</button>
+        <button class="demo-chip" data-email="driver1@smartbus.test" data-pass="driver123">Driver</button>
+        <button class="demo-chip" data-email="parent1@smartbus.test" data-pass="parent123">Parent</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../script/api.js"></script>
+  <script src="../script/toast.js"></script>
+  <script>
+    (() => {
+      const form = document.getElementById('login-form');
+      const emailEl = document.getElementById('email');
+      const passEl = document.getElementById('password');
+      const btn = document.getElementById('submit-btn');
+      const errBox = document.getElementById('login-error');
+
+      function showError(msg) {
+        errBox.textContent = msg;
+        errBox.hidden = false;
+      }
+
+      async function doLogin(email, password) {
+        errBox.hidden = true;
+        btn.disabled = true;
+        btn.textContent = 'Signing in…';
+        try {
+          const user = await api.login(email, password);
+          toast.success(`Welcome, ${user.name}`);
+          const target = user.role === 'DRIVER' ? '/pages/driver.html' : user.role === 'PARENT' ? '/pages/parent.html' : '/pages/dashboard.html';
+          setTimeout(() => { window.location.href = target; }, 400);
+        } catch (e) {
+          showError(e.message || 'Unable to sign in. Please check your credentials.');
+          btn.disabled = false;
+          btn.textContent = 'Sign In';
+        }
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!emailEl.value || !passEl.value) { showError('Please enter your email and password.'); return; }
+        doLogin(emailEl.value.trim(), passEl.value);
+      });
+
+      document.querySelectorAll('.demo-chip').forEach((chip) => {
+        chip.addEventListener('click', () => doLogin(chip.dataset.email, chip.dataset.pass));
+      });
+    })();
+  </script>
+</body>
+</html>

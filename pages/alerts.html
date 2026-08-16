@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartBus — Alerts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style/alerts.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- ===================== SIDEBAR ===================== -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/>
+            <path d="M4 11h16"/>
+            <circle cx="7.5" cy="17.5" r="0.4"/>
+            <circle cx="16.5" cy="17.5" r="0.4"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="name">SmartBus</div>
+          <div class="sub">School Transport System</div>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <a class="nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
+          Dashboard
+        </a>
+        <a class="nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg>
+          Fleet Tracking
+        </a>
+        <a class="nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+          Driver Dashboard
+        </a>
+        <a class="nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Passengers
+        </a>
+        <a class="nav-item active" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          Alerts
+          <span class="nav-badge">4</span>
+        </a>
+        <a class="nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/><path d="M9 13h6M9 17h4"/></svg>
+          Reports
+        </a>
+        <a class="nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8.5 19H15a4 4 0 0 0 4-4V6.5"/></svg>
+          Routes
+        </a>
+        <a class="nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.1-3.1a4 4 0 0 1-5.7 5.7L6.3 20.7a1.6 1.6 0 0 1-2.3-2.3L12.7 9.6a4 4 0 0 1 5.7-5.7l-3.1 3.1z"/></svg>
+          Maintenance
+        </a>
+        <a class="nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+          Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+
+      <div class="profile-card">
+        <img src="https://i.pravatar.cc/80?img=13" alt="Nishant Sah" />
+        <div class="profile-meta">
+          <div class="pname">Nishant Sah</div>
+          <div class="prole">Administrator</div>
+        </div>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+
+      <div class="collapse-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </div>
+    </aside>
+
+    <!-- ===================== MAIN ===================== -->
+    <main class="main">
+
+      <!-- ===== TOPBAR ===== -->
+      <div class="topbar">
+        <div>
+          <h1>Alerts</h1>
+          <p class="welcome">Monitor and manage all system alerts and notifications</p>
+        </div>
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" placeholder="Search alerts...">
+          <span class="kbd">⌘K</span>
+        </div>
+        <div class="top-actions">
+          <div class="icon-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="dot-badge">6</span>
+          </div>
+          <div class="icon-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== STATS ROW ===== -->
+      <div class="stats-row">
+        <div class="stat-card accent-red">
+          <div class="stat-top">
+            <span class="stat-label">Critical Alerts</span>
+            <div class="stat-icon icon-red">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
+            </div>
+          </div>
+          <div class="stat-value">3</div>
+          <div class="stat-foot danger">Requires immediate action</div>
+        </div>
+
+        <div class="stat-card accent-orange">
+          <div class="stat-top">
+            <span class="stat-label">Warning Alerts</span>
+            <div class="stat-icon icon-orange">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg>
+            </div>
+          </div>
+          <div class="stat-value">8</div>
+          <div class="stat-foot orange">Needs attention</div>
+        </div>
+
+        <div class="stat-card accent-blue">
+          <div class="stat-top">
+            <span class="stat-label">Information Alerts</span>
+            <div class="stat-icon icon-blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            </div>
+          </div>
+          <div class="stat-value">15</div>
+          <div class="stat-foot blue">General notifications</div>
+        </div>
+
+        <div class="stat-card accent-green">
+          <div class="stat-top">
+            <span class="stat-label">Resolved Today</span>
+            <div class="stat-icon icon-green">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+          </div>
+          <div class="stat-value">12</div>
+          <div class="stat-foot">+3 from yesterday</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <span class="stat-label">Total Alerts</span>
+            <div class="stat-icon icon-purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg>
+            </div>
+          </div>
+          <div class="stat-value">26</div>
+          <div class="stat-foot muted">Today</div>
+        </div>
+      </div>
+
+      <!-- ===== TWO COLUMN LAYOUT ===== -->
+      <div class="alerts-grid">
+
+        <!-- LEFT COLUMN: FILTERS + ALERT LIST -->
+        <div class="alerts-left">
+          <!-- Filter tabs -->
+          <div class="filter-tabs">
+            <button class="filter-btn active">All Alerts</button>
+            <button class="filter-btn">Unresolved</button>
+            <button class="filter-btn">Resolved</button>
+          </div>
+
+          <!-- Alert list -->
+          <div class="alert-list">
+            <!-- Alert 1 -->
+            <div class="alert-card critical">
+              <div class="alert-header">
+                <span class="alert-type critical">Critical</span>
+                <span class="alert-status unresolved">Unresolved</span>
+              </div>
+              <div class="alert-title">Driver Drowsiness Detected</div>
+              <div class="alert-desc">Drowsiness detected for more than 5 sec</div>
+              <div class="alert-meta-grid">
+                <div class="meta-item">
+                  <span class="meta-label">Bus & Driver</span>
+                  <span class="meta-value">Bus 04 · Ram Kumar</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Location</span>
+                  <span class="meta-value">Godar Road, Dhanusha</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Time</span>
+                  <span class="meta-value">2.4 km from school</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Severity</span>
+                  <span class="meta-value badge-critical">Critical</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Status</span>
+                  <span class="meta-value badge-unresolved">Unresolved</span>
+                </div>
+                <div class="meta-item actions">
+                  <button class="action-resolve">Resolve</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alert 2 -->
+            <div class="alert-card warning">
+              <div class="alert-header">
+                <span class="alert-type warning">Warning</span>
+                <span class="alert-status unresolved">Unresolved</span>
+              </div>
+              <div class="alert-title">High Speed Alert</div>
+              <div class="alert-desc">Bus exceeded speed limit (78 km/h)</div>
+              <div class="alert-meta-grid">
+                <div class="meta-item">
+                  <span class="meta-label">Bus & Driver</span>
+                  <span class="meta-value">Bus 07 · Sita Thapa</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Location</span>
+                  <span class="meta-value">Janakpur Highway</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Time</span>
+                  <span class="meta-value">5.1 km from school</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Severity</span>
+                  <span class="meta-value badge-warning">Warning</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Status</span>
+                  <span class="meta-value badge-unresolved">Unresolved</span>
+                </div>
+                <div class="meta-item actions">
+                  <button class="action-resolve">Resolve</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alert 3 -->
+            <div class="alert-card info">
+              <div class="alert-header">
+                <span class="alert-type info">Information</span>
+                <span class="alert-status unresolved">Unresolved</span>
+              </div>
+              <div class="alert-title">Bus Approaching School</div>
+              <div class="alert-desc">Bus is 500m away from school</div>
+              <div class="alert-meta-grid">
+                <div class="meta-item">
+                  <span class="meta-label">Bus & Driver</span>
+                  <span class="meta-value">Bus 02 · Mohan Thapa</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Location</span>
+                  <span class="meta-value">Main Street, Janakpur</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Time</span>
+                  <span class="meta-value">500 m from school</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Severity</span>
+                  <span class="meta-value badge-info">Information</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Status</span>
+                  <span class="meta-value badge-unresolved">Unresolved</span>
+                </div>
+                <div class="meta-item actions">
+                  <button class="action-resolve">Resolve</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alert 4 -->
+            <div class="alert-card critical">
+              <div class="alert-header">
+                <span class="alert-type critical">Critical</span>
+                <span class="alert-status resolved">Resolved</span>
+              </div>
+              <div class="alert-title">Emergency Button Pressed</div>
+              <div class="alert-desc">Driver pressed emergency button</div>
+              <div class="alert-meta-grid">
+                <div class="meta-item">
+                  <span class="meta-label">Bus & Driver</span>
+                  <span class="meta-value">Bus 01 · Rajesh Singh</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Location</span>
+                  <span class="meta-value">Dhanusha Road</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Time</span>
+                  <span class="meta-value">6.0 km from school</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Severity</span>
+                  <span class="meta-value badge-critical">Critical</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Status</span>
+                  <span class="meta-value badge-resolved">Resolved</span>
+                </div>
+                <div class="meta-item actions">
+                  <span class="resolved-label">Resolved</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alert 5 -->
+            <div class="alert-card warning">
+              <div class="alert-header">
+                <span class="alert-type warning">Warning</span>
+                <span class="alert-status unresolved">Unresolved</span>
+              </div>
+              <div class="alert-title">Sudden Braking Detected</div>
+              <div class="alert-desc">Sudden braking event detected</div>
+              <div class="alert-meta-grid">
+                <div class="meta-item">
+                  <span class="meta-label">Bus & Driver</span>
+                  <span class="meta-value">Bus 05 · Gita Shah</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Location</span>
+                  <span class="meta-value">Depot Road</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Time</span>
+                  <span class="meta-value">3.8 km from school</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Severity</span>
+                  <span class="meta-value badge-warning">Warning</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Status</span>
+                  <span class="meta-value badge-unresolved">Unresolved</span>
+                </div>
+                <div class="meta-item actions">
+                  <button class="action-resolve">Resolve</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alert 6 -->
+            <div class="alert-card info">
+              <div class="alert-header">
+                <span class="alert-type info">Information</span>
+                <span class="alert-status resolved">Resolved</span>
+              </div>
+              <div class="alert-title">Maintenance Scheduled</div>
+              <div class="alert-desc">Scheduled maintenance due in 3 days</div>
+              <div class="alert-meta-grid">
+                <div class="meta-item">
+                  <span class="meta-label">Bus</span>
+                  <span class="meta-value">Bus 08</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Location</span>
+                  <span class="meta-value">Depot</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Time</span>
+                  <span class="meta-value">Due in 3 days</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Severity</span>
+                  <span class="meta-value badge-info">Information</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Status</span>
+                  <span class="meta-value badge-resolved">Resolved</span>
+                </div>
+                <div class="meta-item actions">
+                  <span class="resolved-label">Resolved</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-pagination">
+            <span>Showing 1 to 6 of 26 alerts</span>
+            <div class="pagination">
+              <button>&larr;</button>
+              <button class="active">1</button>
+              <button>2</button>
+              <button>3</button>
+              <button>…</button>
+              <button>5</button>
+              <button>&rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: CHARTS + RECENT ACTIVITY -->
+        <div class="alerts-right">
+
+          <!-- Alerts by Type (donut) -->
+          <div class="card">
+            <div class="card-head">
+              <h3>Alerts by Type</h3>
+            </div>
+            <div class="donut-wrap">
+              <svg width="160" height="160" viewBox="0 0 160 160">
+                <circle cx="80" cy="80" r="64" fill="none" stroke="#eceef2" stroke-width="20"/>
+                <circle cx="80" cy="80" r="64" fill="none" stroke="#ef4444" stroke-width="20"
+                  stroke-dasharray="38.4 382.6" stroke-dashoffset="0" transform="rotate(-90 80 80)" stroke-linecap="round"/>
+                <circle cx="80" cy="80" r="64" fill="none" stroke="#f59e0b" stroke-width="20"
+                  stroke-dasharray="102.4 382.6" stroke-dashoffset="-38.4" transform="rotate(-90 80 80)" stroke-linecap="round"/>
+                <circle cx="80" cy="80" r="64" fill="none" stroke="#3b82f6" stroke-width="20"
+                  stroke-dasharray="241.8 382.6" stroke-dashoffset="-140.8" transform="rotate(-90 80 80)" stroke-linecap="round"/>
+              </svg>
+              <div class="donut-center">
+                <div class="donut-total">26</div>
+                <div class="donut-label">Total</div>
+              </div>
+            </div>
+            <div class="donut-legend">
+              <div class="legend-item"><span class="dot red"></span> Critical <span class="pct">3 (12%)</span></div>
+              <div class="legend-item"><span class="dot orange"></span> Warning <span class="pct">8 (31%)</span></div>
+              <div class="legend-item"><span class="dot blue"></span> Information <span class="pct">15 (58%)</span></div>
+            </div>
+          </div>
+
+          <!-- Alert Trend (bar chart) -->
+          <div class="card">
+            <div class="card-head">
+              <h3>Alert Trend</h3>
+              <span class="trend-label">This Week</span>
+            </div>
+            <div class="trend-bars">
+              <div class="trend-item"><div class="bar" style="height:28px;"></div><span>Mon</span></div>
+              <div class="trend-item"><div class="bar" style="height:18px;"></div><span>Tue</span></div>
+              <div class="trend-item"><div class="bar" style="height:34px;"></div><span>Wed</span></div>
+              <div class="trend-item"><div class="bar" style="height:22px;"></div><span>Thu</span></div>
+              <div class="trend-item"><div class="bar" style="height:40px;"></div><span>Fri</span></div>
+              <div class="trend-item"><div class="bar" style="height:30px;"></div><span>Sat</span></div>
+              <div class="trend-item"><div class="bar" style="height:16px;"></div><span>Sun</span></div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="card">
+            <div class="card-head">
+              <h3>Recent Alert Activity</h3>
+              <a class="link" href="#">View all</a>
+            </div>
+            <div class="activity-list">
+              <div class="activity-item">
+                <span class="activity-dot red"></span>
+                <div class="activity-content">
+                  <div class="activity-text">Driver drowsiness detected on Bus 04</div>
+                  <div class="activity-time">2 min ago</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <span class="activity-dot orange"></span>
+                <div class="activity-content">
+                  <div class="activity-text">High speed alert on Bus 07</div>
+                  <div class="activity-time">8 min ago</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <span class="activity-dot blue"></span>
+                <div class="activity-content">
+                  <div class="activity-text">Bus 02 approaching school</div>
+                  <div class="activity-time">12 min ago</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <span class="activity-dot red"></span>
+                <div class="activity-content">
+                  <div class="activity-text">Emergency button pressed on Bus 01</div>
+                  <div class="activity-time">18 min ago</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../script/alerts.js"></script>
+</body>
+</html>

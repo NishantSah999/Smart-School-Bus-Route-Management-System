@@ -27,5 +27,8 @@
     "socket.io": "^4.7.5",
     "zod": "^3.23.8"
   },
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "socket.io-client": "^4.8.3"
+  }
 }

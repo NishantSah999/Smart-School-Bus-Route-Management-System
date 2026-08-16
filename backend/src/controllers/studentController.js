@@ -3,11 +3,13 @@ const Attendance = require('../models/Attendance');
 const AuditLog = require('../models/AuditLog');
 const AppError = require('../utils/AppError');
 const asyncHandler = require('../utils/asyncHandler');
+const { scopeDriver } = require('../utils/roleScope');
 
 const list = asyncHandler(async (req, res) => {
+  const scope = await scopeDriver(req);
   const data = await Student.list({
     page: req.query.page, limit: req.query.limit, search: req.query.search,
-    grade: req.query.grade, route_id: req.query.route_id, bus_id: req.query.bus_id,
+    grade: req.query.grade, route_id: req.query.route_id, bus_id: scope.bus_id || req.query.bus_id,
     status: req.query.status, school_id: req.query.school_id || req.user.school_id,
   });
   res.status(200).json({ data });

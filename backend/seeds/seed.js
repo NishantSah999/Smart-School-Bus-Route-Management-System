@@ -100,7 +100,7 @@ async function main() {
   const models = ['Ashok Leyland', 'Tata Starbus', 'Force Traveller', 'Mahindra Tourister', 'SML Isuzu'];
   for (let i = 0; i < 12; i++) {
     const driver = i < drivers.length ? drivers[i] : null;
-    const route = ROUTES[i % 4];
+    const route = routes[ROUTES[i % 4].route_code];
     const lat = SCHOOL.latitude + (i % 5) * 0.006;
     const lng = SCHOOL.longitude - (i % 4) * 0.005;
     const speed = busStatuses[i] === 'ON_ROUTE' ? 28 + (i % 20) : 0;
@@ -136,8 +136,8 @@ async function main() {
   for (let i = 0; i < 186; i++) {
     const firstName = FIRST[i % FIRST.length];
     const lastName = LAST[(i * 7) % LAST.length];
-    const route = ROUTES[i % 4];
-    const stopsForRoute = allStops[route.route_code];
+    const route = routes[ROUTES[i % 4].route_code];
+    const stopsForRoute = allStops[ROUTES[i % 4].route_code];
     const pickup = stopsForRoute[i % stopsForRoute.length];
     const drop = stopsForRoute[stopsForRoute.length - 1];
     const gradePick = (() => {
@@ -159,7 +159,7 @@ async function main() {
   const tripTypes = ['MORNING', 'AFTERNOON'];
   for (let i = 0; i < 12; i++) {
     const bus = buses[i];
-    const route = ROUTES[i % 4];
+    const route = routes[ROUTES[i % 4].route_code];
     const driver = drivers[i % drivers.length];
     const type = tripTypes[i % 2];
     const start = new Date(Date.now() - (i * 45 + 15) * 60000);
@@ -183,7 +183,7 @@ async function main() {
     const def = alertDefs[i];
     const bus = buses[i % buses.length];
     const driver = drivers[i % drivers.length];
-    const route = ROUTES[i % 4];
+    const route = routes[ROUTES[i % 4].route_code];
     const resolved = i >= 3;
     await pool.query(
       `INSERT INTO alerts (type, severity, bus_id, driver_id, route_id, latitude, longitude, message, status, created_at, resolved_at, resolved_by)

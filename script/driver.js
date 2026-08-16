@@ -207,8 +207,14 @@
       bus = buses.data[0];
       $('driver-sub').textContent = `Assigned to ${bus.bus_number} — ${bus.model || 'bus'}`;
       $('trip-bus').textContent = bus.bus_number;
-      $('trip-route').textContent = bus.route_name || '—';
       $('trip-passengers').textContent = bus.passenger_count ?? '0';
+
+      // The route a bus is on is its active trip's route; fall back to the most recent trip.
+      if (!bus.route_id) {
+        const { data: prev } = await api.get('/trips', { limit: 1 });
+        if (prev.data.length) { bus.route_id = prev.data[0].route_id; bus.route_name = prev.data[0].route_name; }
+      }
+      $('trip-route').textContent = bus.route_name || '—';
 
       const { data: trips } = await api.get('/trips', { driver_id: driverId, status: 'ACTIVE', limit: 1 });
       if (trips.data.length) {

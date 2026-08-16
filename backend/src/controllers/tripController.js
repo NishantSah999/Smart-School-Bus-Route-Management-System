@@ -2,13 +2,15 @@ const Trip = require('../models/Trip');
 const Bus = require('../models/Bus');
 const AppError = require('../utils/AppError');
 const asyncHandler = require('../utils/asyncHandler');
+const { scopeDriver } = require('../utils/roleScope');
 const socketService = require('../services/socketService');
 const { notify } = require('../services/notificationService');
 
 const list = asyncHandler(async (req, res) => {
+  const scope = await scopeDriver(req);
   const data = await Trip.list({
-    page: req.query.page, limit: req.query.limit, bus_id: req.query.bus_id,
-    route_id: req.query.route_id, driver_id: req.query.driver_id, status: req.query.status,
+    page: req.query.page, limit: req.query.limit, bus_id: scope.bus_id || req.query.bus_id,
+    route_id: req.query.route_id, driver_id: scope.driver_id || req.query.driver_id, status: req.query.status,
     date: req.query.date, school_id: req.user.school_id,
   });
   res.status(200).json({ data });

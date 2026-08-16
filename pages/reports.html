@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartBus — Reports Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style/reports.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/>
+          <path d="M4 11h16"/>
+          <circle cx="7.5" cy="17.5" r="0.4"/>
+          <circle cx="16.5" cy="17.5" r="0.4"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="name">SmartBus</div>
+        <div class="sub">School Transport System</div>
+      </div>
+    </div>
+
+    <nav class="menu">
+      <a class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
+        Dashboard
+      </a>
+      <a class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg>
+        Fleet Tracking
+      </a>
+      <a class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+        Driver Dashboard
+      </a>
+      <a class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Passengers
+      </a>
+      <a class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        Alerts
+        <span class="nav-badge">4</span>
+      </a>
+      <a class="nav-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/><path d="M9 13h6M9 17h4"/></svg>
+        Reports
+      </a>
+      <a class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8.5 19H15a4 4 0 0 0 4-4V6.5"/></svg>
+        Routes
+      </a>
+      <a class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.1-3.1a4 4 0 0 1-5.7 5.7L6.3 20.7a1.6 1.6 0 0 1-2.3-2.3L12.7 9.6a4 4 0 0 1 5.7-5.7l-3.1 3.1z"/></svg>
+        Maintenance
+      </a>
+      <a class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+        Settings
+      </a>
+    </nav>
+
+    <div class="sidebar-spacer"></div>
+
+    <div class="profile-card">
+      <img src="https://i.pravatar.cc/80?img=13" alt="Nishant Sah">
+      <div class="profile-meta">
+        <div class="pname">Nishant Sah</div>
+        <div class="prole">Administrator</div>
+      </div>
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+
+    <div class="collapse-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <main class="main">
+
+    <div class="topbar">
+      <div>
+        <h1>Reports Dashboard</h1>
+        <p class="welcome">Insights and analytics for smart school transport</p>
+      </div>
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" placeholder="Search reports, buses, drivers...">
+        <span class="kbd">⌘K</span>
+      </div>
+      <div class="top-actions">
+        <div class="icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="dot-badge">6</span>
+        </div>
+        <div class="icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stat cards -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-top">
+          <span class="stat-label">Total Trips</span>
+          <div class="stat-icon icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/><path d="M4 11h16"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">186</div>
+        <div class="stat-foot">↑ 12% vs last week</div>
+      </div>
+
+      <div class="stat-card accent-purple">
+        <div class="stat-top">
+          <span class="stat-label">On-Time Performance</span>
+          <div class="stat-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">94%</div>
+        <div class="stat-foot">↑ 6% vs last week</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-top">
+          <span class="stat-label">Fuel Efficiency</span>
+          <div class="stat-icon icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16"/><path d="M3 12h10"/><path d="M15 8h1.5L19 10v6a1 1 0 0 1-1 1h-.5"/><circle cx="17.5" cy="17.5" r="1.5"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">18.4 km/L</div>
+        <div class="stat-foot">↑ 8% vs last week</div>
+      </div>
+
+      <div class="stat-card accent-purple">
+        <div class="stat-top">
+          <span class="stat-label">Safety Score</span>
+          <div class="stat-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">98%</div>
+        <div class="stat-foot">↑ 4% vs last week</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-top">
+          <span class="stat-label">Total Distance</span>
+          <div class="stat-icon icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8.5 19H15a4 4 0 0 0 4-4V6.5"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">1,248 km</div>
+        <div class="stat-foot">↑ 14% vs last week</div>
+      </div>
+    </div>
+
+    <!-- Trip Performance + Alert Type Report + Recent Reports -->
+    <div class="grid-2 grid-reports">
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h3>Trip Performance</h3>
+          </div>
+          <div class="toggle-group">
+            <button class="toggle-btn active">Week</button>
+            <button class="toggle-btn">Month</button>
+            <button class="toggle-btn">Year</button>
+          </div>
+        </div>
+
+        <div class="chart-wrap">
+          <div class="chart-y-labels">
+            <span>100%</span><span>90%</span><span>80%</span><span>70%</span><span>60%</span>
+          </div>
+          <div class="chart-svg-area">
+            <svg viewBox="0 0 560 190" width="100%" height="190" preserveAspectRatio="none">
+              <line x1="0" y1="0" x2="560" y2="0" stroke="#eceef2" stroke-width="1"/>
+              <line x1="0" y1="47.5" x2="560" y2="47.5" stroke="#eceef2" stroke-width="1"/>
+              <line x1="0" y1="95" x2="560" y2="95" stroke="#eceef2" stroke-width="1"/>
+              <line x1="0" y1="142.5" x2="560" y2="142.5" stroke="#eceef2" stroke-width="1"/>
+              <line x1="0" y1="190" x2="560" y2="190" stroke="#eceef2" stroke-width="1"/>
+
+              <polygon points="10,66 90,85 170,52 250,71 330,66 410,42 490,52 490,190 10,190"
+                fill="url(#greenFade)" opacity="0.5"/>
+              <polyline points="10,66 90,85 170,52 250,71 330,66 410,42 490,52"
+                fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="10,142 90,124 170,142 250,109 330,133 410,114 490,128"
+                fill="none" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+              <g fill="#22c55e">
+                <circle cx="10" cy="66" r="5"/><circle cx="90" cy="85" r="5"/><circle cx="170" cy="52" r="5"/>
+                <circle cx="250" cy="71" r="5"/><circle cx="330" cy="66" r="5"/><circle cx="410" cy="42" r="5"/><circle cx="490" cy="52" r="5"/>
+              </g>
+              <g fill="#8b5cf6">
+                <circle cx="10" cy="142" r="5"/><circle cx="90" cy="124" r="5"/><circle cx="170" cy="142" r="5"/>
+                <circle cx="250" cy="109" r="5"/><circle cx="330" cy="133" r="5"/><circle cx="410" cy="114" r="5"/><circle cx="490" cy="128" r="5"/>
+              </g>
+              <defs>
+                <linearGradient id="greenFade" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#22c55e" stop-opacity="0.18"/>
+                  <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="chart-x-labels">
+            <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+          </div>
+          <div class="chart-legend">
+            <div class="chart-legend-item"><span class="chart-legend-dot" style="background:#22c55e"></span>On-Time Performance</div>
+            <div class="chart-legend-item"><span class="chart-legend-dot" style="background:#8b5cf6"></span>Total Trips</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Alert Type Report</h3>
+        </div>
+        <div class="donut-report-wrap">
+          <svg width="170" height="170" viewBox="0 0 170 170">
+            <circle cx="85" cy="85" r="68" fill="none" stroke="#eceef2" stroke-width="20"/>
+            <circle cx="85" cy="85" r="68" fill="none" stroke="#ef4444" stroke-width="20"
+              stroke-dasharray="128.16 427.2" stroke-dashoffset="0" transform="rotate(-90 85 85)" stroke-linecap="round"/>
+            <circle cx="85" cy="85" r="68" fill="none" stroke="#f59e0b" stroke-width="20"
+              stroke-dasharray="170.88 427.2" stroke-dashoffset="-128.16" transform="rotate(-90 85 85)" stroke-linecap="round"/>
+            <circle cx="85" cy="85" r="68" fill="none" stroke="#8b5cf6" stroke-width="20"
+              stroke-dasharray="85.44 427.2" stroke-dashoffset="-299.04" transform="rotate(-90 85 85)" stroke-linecap="round"/>
+            <circle cx="85" cy="85" r="68" fill="none" stroke="#22c55e" stroke-width="20"
+              stroke-dasharray="42.72 427.2" stroke-dashoffset="-384.48" transform="rotate(-90 85 85)" stroke-linecap="round"/>
+          </svg>
+          <div class="donut-center-label" style="margin-top:-108px; margin-bottom:70px;">
+            <div class="big">26</div>
+            <div class="small">Total</div>
+          </div>
+          <div class="donut-legend">
+            <div class="donut-legend-row"><span class="sw" style="background:#ef4444"></span>Critical <span class="val">30%</span></div>
+            <div class="donut-legend-row"><span class="sw" style="background:#f59e0b"></span>Warning <span class="val">40%</span></div>
+            <div class="donut-legend-row"><span class="sw" style="background:#8b5cf6"></span>Info <span class="val">20%</span></div>
+            <div class="donut-legend-row"><span class="sw" style="background:#22c55e"></span>Resolved <span class="val">10%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Recent Reports</h3>
+          <a class="link" href="#">View All</a>
+        </div>
+
+        <div class="alert-item bg-red">
+          <div class="alert-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg></div>
+          <div class="alert-body">
+            <div class="alert-title">Driver Drowsiness</div>
+            <div class="alert-meta">Bus 04 &nbsp;&bull;&nbsp; 2m ago</div>
+          </div>
+          <span class="badge badge-red">Critical</span>
+        </div>
+
+        <div class="alert-item bg-orange">
+          <div class="alert-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
+          <div class="alert-body">
+            <div class="alert-title">High Speed Alert</div>
+            <div class="alert-meta">Bus 07 &nbsp;&bull;&nbsp; 12m ago</div>
+          </div>
+          <span class="badge badge-orange">Warning</span>
+        </div>
+
+        <div class="alert-item bg-green">
+          <div class="alert-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <div class="alert-body">
+            <div class="alert-title">Trip Completed</div>
+            <div class="alert-meta">Bus 02 &nbsp;&bull;&nbsp; 1h ago</div>
+          </div>
+          <span class="badge badge-green">Resolved</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buses Performance + Report Filters -->
+    <div class="grid-tables">
+      <div class="card">
+        <div class="card-head">
+          <h3>Buses Performance</h3>
+        </div>
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th><div class="th-flex">Bus No. <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></div></th>
+              <th>Driver</th>
+              <th>Trips</th>
+              <th><div class="th-flex">On-Time % <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></div></th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="bus-cell"><span class="bus-ico icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/></svg></span>BUS 04</div></td>
+              <td>Ram Kumar</td>
+              <td>12</td>
+              <td>92%</td>
+              <td><span class="status-pill">Active</span></td>
+            </tr>
+            <tr>
+              <td><div class="bus-cell"><span class="bus-ico icon-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/></svg></span>BUS 07</div></td>
+              <td>Suresh Yadav</td>
+              <td>14</td>
+              <td>96%</td>
+              <td><span class="status-pill">Active</span></td>
+            </tr>
+            <tr>
+              <td><div class="bus-cell"><span class="bus-ico icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/></svg></span>BUS 02</div></td>
+              <td>Mohan Thapa</td>
+              <td>11</td>
+              <td>100%</td>
+              <td><span class="status-pill">Active</span></td>
+            </tr>
+            <tr>
+              <td><div class="bus-cell"><span class="bus-ico icon-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/></svg></span>BUS 01</div></td>
+              <td>Raju Shah</td>
+              <td>13</td>
+              <td>90%</td>
+              <td><span class="status-pill">Active</span></td>
+            </tr>
+            <tr>
+              <td><div class="bus-cell"><span class="bus-ico icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/></svg></span>BUS 08</div></td>
+              <td>Amit Gupta</td>
+              <td>10</td>
+              <td>94%</td>
+              <td><span class="status-pill">Active</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Report Filters</h3>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label">Date Range</label>
+          <div class="filter-select">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg>
+            <span>May 20, 2025 &ndash; May 26, 2025</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label">Bus</label>
+          <div class="filter-select">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/></svg>
+            <span>All Buses</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label">Driver</label>
+          <div class="filter-select">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <span>All Drivers</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label">Report Type</label>
+          <div class="filter-select">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/></svg>
+            <span>All Reports</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+
+        <div class="filter-actions">
+          <button class="btn-apply">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3Z"/></svg>
+            Apply Filter
+          </button>
+          <button class="btn-reset">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+            Reset
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly Summary + System Health -->
+    <div class="grid-bottom">
+      <div class="card">
+        <div class="card-head">
+          <h3>Monthly Summary</h3>
+          <div class="chart-legend" style="margin:0;">
+            <div class="chart-legend-item"><span class="chart-legend-dot" style="background:#22c55e"></span>Trips</div>
+            <div class="chart-legend-item"><span class="chart-legend-dot" style="background:#8b5cf6"></span>Passengers</div>
+            <div class="chart-legend-item"><span class="chart-legend-dot" style="background:#f59e0b"></span>Alerts</div>
+          </div>
+        </div>
+        <div class="bar-chart-wrap">
+          <div class="bar-y-labels">
+            <span>600</span><span>400</span><span>200</span><span>0</span>
+          </div>
+          <div class="bar-plot">
+            <div class="bar-group"><div class="bar" style="height:88%; background:#22c55e;"></div><div class="bar" style="height:38%; background:#8b5cf6;"></div><div class="bar" style="height:16%; background:#f59e0b;"></div></div>
+            <div class="bar-group"><div class="bar" style="height:75%; background:#22c55e;"></div><div class="bar" style="height:44%; background:#8b5cf6;"></div><div class="bar" style="height:20%; background:#f59e0b;"></div></div>
+            <div class="bar-group"><div class="bar" style="height:92%; background:#22c55e;"></div><div class="bar" style="height:33%; background:#8b5cf6;"></div><div class="bar" style="height:14%; background:#f59e0b;"></div></div>
+            <div class="bar-group"><div class="bar" style="height:80%; background:#22c55e;"></div><div class="bar" style="height:40%; background:#8b5cf6;"></div><div class="bar" style="height:18%; background:#f59e0b;"></div></div>
+            <div class="bar-group"><div class="bar" style="height:95%; background:#22c55e;"></div><div class="bar" style="height:36%; background:#8b5cf6;"></div><div class="bar" style="height:15%; background:#f59e0b;"></div></div>
+          </div>
+          <div class="bar-x-labels">
+            <span>May 1</span><span>May 8</span><span>May 15</span><span>May 22</span><span>May 29</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>System Health</h3>
+        </div>
+        <div class="health-donut-wrap">
+          <svg width="130" height="130" viewBox="0 0 130 130">
+            <circle cx="65" cy="65" r="52" fill="none" stroke="#eceef2" stroke-width="14"/>
+            <circle cx="65" cy="65" r="52" fill="none" stroke="#22c55e" stroke-width="14"
+              stroke-dasharray="320.2 326.7" stroke-linecap="round" transform="rotate(-90 65 65)"/>
+          </svg>
+          <div class="health-center" style="margin-top:-84px; margin-bottom:38px;">
+            <div class="big">98%</div>
+            <div class="small">Online</div>
+          </div>
+          <div class="health-list">
+            <div class="health-item"><span class="health-dot"></span>GPS Service <span class="badge badge-green">Active</span></div>
+            <div class="health-item"><span class="health-dot"></span>Camera System <span class="badge badge-green">Active</span></div>
+            <div class="health-item"><span class="health-dot"></span>Notifications <span class="badge badge-green">Active</span></div>
+            <div class="health-item"><span class="health-dot"></span>Database <span class="badge badge-green">Active</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="../script/reports.js"></script>
+</body>
+</html>

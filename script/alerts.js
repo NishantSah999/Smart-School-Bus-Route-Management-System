@@ -1,63 +1,53 @@
-// script.js – SmartBus Alerts Dashboard
+// SmartBus — Alerts page interactions
 
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('SmartBus Alerts Dashboard loaded');
+document.addEventListener('DOMContentLoaded', function () {
 
-  // Filter tabs
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      // Simulate filtering
-      alert(`Filter: ${this.textContent} (simulated)`);
-    });
-  });
-
-  // Resolve buttons
-  const resolveBtns = document.querySelectorAll('.action-resolve');
-  resolveBtns.forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      const card = this.closest('.alert-card');
-      const statusBadge = card.querySelector('.alert-status');
-      if (statusBadge) {
-        statusBadge.textContent = 'Resolved';
-        statusBadge.className = 'alert-status resolved';
-        // Update meta status if present
-        const statusMeta = card.querySelector('.badge-unresolved');
-        if (statusMeta) {
-          statusMeta.textContent = 'Resolved';
-          statusMeta.className = 'meta-value badge-resolved';
-        }
-        // Replace button with resolved label
-        const actionsDiv = this.closest('.meta-item.actions');
-        if (actionsDiv) {
-          actionsDiv.innerHTML = '<span class="resolved-label">Resolved</span>';
-        }
-      }
-    });
-  });
-
-  // Pagination
-  const paginationBtns = document.querySelectorAll('.alert-pagination .pagination button');
-  paginationBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
-      const txt = this.textContent.trim();
-      if (txt === '…' || txt === '←' || txt === '→') return;
-      paginationBtns.forEach(b => b.classList.remove('active'));
+  // Status tabs (All Alerts / Unresolved / Resolved)
+  const statusTabs = document.querySelectorAll('.status-tab');
+  statusTabs.forEach(tab => {
+    tab.addEventListener('click', function () {
+      statusTabs.forEach(t => t.classList.remove('active'));
       this.classList.add('active');
     });
   });
 
-  // Search
-  const searchInput = document.querySelector('.search-wrap input');
-  if (searchInput) {
-    searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        alert(`Searching for: "${searchInput.value}" (simulated)`);
-      }
+  // Pagination buttons
+  const pageButtons = document.querySelectorAll('.pg-btn');
+  pageButtons.forEach(btn => {
+    btn.addEventListener('click', function () {
+      if (this.querySelector('svg')) return; // skip prev/next arrows
+      pageButtons.forEach(b => {
+        if (!b.querySelector('svg')) b.classList.remove('active');
+      });
+      this.classList.add('active');
+    });
+  });
+
+  // "Select all" header checkbox toggles every row checkbox
+  const headerChk = document.querySelector('thead .chk');
+  const rowChks = document.querySelectorAll('tbody .chk');
+  if (headerChk) {
+    headerChk.addEventListener('change', function () {
+      rowChks.forEach(c => { c.checked = headerChk.checked; });
     });
   }
+
+  // Row action menu (kebab) — placeholder click handler
+  document.querySelectorAll('.row-menu').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      console.log('Row menu clicked');
+    });
+  });
+
+  // Clear Filters resets dropdown labels and search box
+  const clearFilters = document.querySelector('.clear-filters');
+  if (clearFilters) {
+    clearFilters.addEventListener('click', function () {
+      document.querySelectorAll('.search-wrap input').forEach(i => i.value = '');
+      statusTabs.forEach(t => t.classList.remove('active'));
+      if (statusTabs[0]) statusTabs[0].classList.add('active');
+    });
+  }
+
 });

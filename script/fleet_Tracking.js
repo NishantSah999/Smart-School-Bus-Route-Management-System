@@ -147,7 +147,7 @@
 
   function connectSocket() {
     if (!api.store.access || !window.io) return;
-    const socket = io('/', { auth: { token: api.store.access } });
+    const socket = io(api.socketOrigin, { auth: { token: api.store.access } });
     socket.on('bus:location', updateBusLocation);
     socket.on('trip:started', () => loadFleet());
     socket.on('trip:ended', () => loadFleet());

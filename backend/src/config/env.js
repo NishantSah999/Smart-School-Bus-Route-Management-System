@@ -13,7 +13,7 @@ module.exports = {
     expiresIn: str(process.env.JWT_EXPIRES_IN, '15m'),
     refreshExpiresIn: str(process.env.JWT_REFRESH_EXPIRES_IN, '7d'),
   },
-  corsOrigin: (process.env.CORS_ORIGIN || 'http://localhost:5500,http://localhost:3000')
+  corsOrigin: (process.env.CORS_ORIGIN || 'http://localhost:5500,http://127.0.0.1:5500,http://localhost:3000')
     .split(',').map((s) => s.trim()).filter(Boolean),
   smtp: {
     host: str(process.env.SMTP_HOST, ''),

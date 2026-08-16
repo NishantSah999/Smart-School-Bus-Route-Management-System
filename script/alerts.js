@@ -420,7 +420,7 @@
   function connectSocket() {
     if (!api.store.access) return;
     try {
-      const socket = io('/', { auth: { token: api.store.access } });
+      const socket = io(api.socketOrigin, { auth: { token: api.store.access } });
       socket.on('alert:new', (alert) => {
         loadStats();
         loadAlerts();

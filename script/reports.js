@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+// Legacy page interactions.
 // SmartBus — shared UI interactions
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
-=======
+// API-backed report data.
 // SmartBus Reports — KPI cards, daily trips chart, route/fleet/safety tables, CSV export.
 (() => {
   if (!auth.guard(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'TRANSPORT_MANAGER', 'TEACHER'])) return;
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         collectFilters();
         const q = qs();
-        const res = await fetch(`/api/v1/reports/export?type=${a.dataset.csv}${q ? '&' + q : ''}`, {
+        const res = await fetch(`${api.baseUrl}/reports/export?type=${a.dataset.csv}${q ? '&' + q : ''}`, {
           headers: { Authorization: `Bearer ${api.store.access}` },
         });
         if (!res.ok) return toast.error('Could not export CSV');
@@ -174,4 +174,3 @@ document.addEventListener('DOMContentLoaded', () => {
     loadAll();
   });
 })();
->>>>>>> 8ed852536bb0a08831ca38830bad14a5360a827c

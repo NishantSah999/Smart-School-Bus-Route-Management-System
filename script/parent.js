@@ -100,7 +100,7 @@
 
   function connectSocket() {
     if (!api.store.access || !window.io) return;
-    const socket = io('/', { auth: { token: api.store.access } });
+    const socket = io(api.socketOrigin, { auth: { token: api.store.access } });
     socket.on('notification:new', (n) => { toast.info(n.title); loadNotifications(); });
     socket.on('student:boarded', (r) => { toast.success('Your child has boarded the bus.'); load(); });
     socket.on('student:dropped', (r) => { toast.success('Your child was dropped off.'); load(); });

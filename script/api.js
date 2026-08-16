@@ -1,6 +1,15 @@
 // SmartBus API client — fetch wrapper with JWT, auto-refresh and centralized errors.
 (() => {
-  const BASE = '/api/v1';
+  // When pages are opened through VS Code Live Server, it only serves static
+  // files on :5500. Send API and Socket.IO traffic to the Express server.
+  // In production the frontend is served by Express, so relative URLs remain
+  // the correct same-origin default.
+  const isLiveServer = ['localhost', '127.0.0.1'].includes(window.location.hostname)
+    && window.location.port === '5500';
+  const backendOrigin = isLiveServer
+    ? `${window.location.protocol}//${window.location.hostname}:8080`
+    : window.location.origin;
+  const BASE = window.SMARTBUS_API_BASE || (isLiveServer ? `${backendOrigin}/api/v1` : '/api/v1');
 
   const store = {
     get access() { return localStorage.getItem('sb_access'); },
@@ -82,6 +91,8 @@
   }
 
   window.api = {
+    baseUrl: BASE,
+    socketOrigin: backendOrigin,
     store,
     get: (p, params) => request('GET', p, null, params),
     post: (p, body) => request('POST', p, body),

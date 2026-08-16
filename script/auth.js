@@ -1,9 +1,10 @@
 // Shared auth helpers: guard pages, render the current user in the sidebar, logout.
 (() => {
-  function guard() {
+  function guard(roles) {
     if (!api.authRequired()) return false;
     const user = api.store.user;
-    if (user && window.SB_ROLE_REQUIRED && !['SUPER_ADMIN', ...(window.SB_ROLE_REQUIRED || [])].includes(user.role) && user.role !== 'SUPER_ADMIN') {
+    const allowed = roles || window.SB_ROLE_REQUIRED || [];
+    if (user && !['SUPER_ADMIN', ...allowed].includes(user.role) && user.role !== 'SUPER_ADMIN') {
       window.location.href = '/pages/dashboard.html';
       return false;
     }

@@ -33,6 +33,7 @@ const authLimiter = rateLimit({
 });
 
 app.get('/health', (_req, res) => res.status(200).json({ status: 'ok', uptime: process.uptime() }));
+app.get('/', (_req, res) => res.redirect('/pages/login.html'));
 
 // Serve the existing frontend from the same origin so no CORS proxy is needed.
 const frontendRoot = path.join(__dirname, '..');

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartBus — Reports &amp; Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style/admin.css">
+  <link rel="stylesheet" href="../style/reports.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/><path d="M4 11h16"/>
+          <circle cx="7.5" cy="17.5" r="0.4"/><circle cx="16.5" cy="17.5" r="0.4"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="name">SmartBus</div>
+        <div class="sub">School Transport System</div>
+      </div>
+    </div>
+
+    <nav class="menu">
+      <a class="nav-item" href="/pages/dashboard.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
+        Dashboard
+      </a>
+      <a class="nav-item" href="/pages/Fleet-Tracking.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg>
+        Fleet Tracking
+      </a>
+      <a class="nav-item" href="/pages/alerts.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        Alerts
+      </a>
+      <a class="nav-item active" href="/pages/reports.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-6 3 3 5-8"/></svg>
+        Reports
+      </a>
+    </nav>
+
+    <div class="sidebar-spacer"></div>
+
+    <div class="profile-card">
+      <img src="https://i.pravatar.cc/80?img=13" alt="Admin">
+      <div class="profile-meta">
+        <div class="pname" id="reports-user">Loading…</div>
+        <div class="prole">Administrator</div>
+      </div>
+      <a class="logout-link" href="#" data-logout>Sign out</a>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <div class="topbar">
+      <div>
+        <h1>Reports &amp; Analytics</h1>
+        <p class="welcome">Operational metrics computed from the database.</p>
+      </div>
+    </div>
+
+    <div class="filters-bar card">
+      <select id="f-bus"><option value="">All buses</option></select>
+      <select id="f-route"><option value="">All routes</option></select>
+      <select id="f-driver"><option value="">All drivers</option></select>
+      <input type="date" id="f-from">
+      <span class="dash-sep">–</span>
+      <input type="date" id="f-to">
+      <button class="btn-primary" id="btn-apply">Apply</button>
+      <div class="export-group">
+        <a class="btn-ghost" href="#" data-csv="trips">⬇ Trips CSV</a>
+        <a class="btn-ghost" href="#" data-csv="alerts">⬇ Alerts CSV</a>
+      </div>
+    </div>
+
+    <!-- KPI cards -->
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-label">Total Trips</div><div class="kpi-value" id="k-trips">–</div><div class="kpi-sub">in range</div></div>
+      <div class="kpi-card"><div class="kpi-label">Completed</div><div class="kpi-value" id="k-completed">–</div><div class="kpi-sub">cancelled <span id="k-cancelled">–</span></div></div>
+      <div class="kpi-card"><div class="kpi-label">Distance</div><div class="kpi-value" id="k-distance">–</div><div class="kpi-sub">km travelled</div></div>
+      <div class="kpi-card"><div class="kpi-label">Passengers</div><div class="kpi-value" id="k-passengers">–</div><div class="kpi-sub">transported</div></div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Daily trips bar chart -->
+      <div class="card">
+        <div class="card-head"><div><h3>Trips per day</h3><p>Last 30 days</p></div></div>
+        <div class="chart" id="daily-chart"><div style="color:#6b7280;font-size:14px;">Loading…</div></div>
+      </div>
+
+      <!-- Route performance -->
+      <div class="card">
+        <div class="card-head"><div><h3>Route performance</h3><p>Completed trips per route</p></div></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Route</th><th>Trips</th><th>Avg duration</th><th>Avg distance</th><th>Passengers</th></tr></thead>
+            <tbody id="route-tbody"><tr><td colspan="5" style="text-align:center;color:#6b7280;">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Fleet utilization -->
+      <div class="card">
+        <div class="card-head"><div><h3>Fleet status</h3><p>Current bus utilization</p></div></div>
+        <div class="util-wrap" id="util-wrap"><div style="color:#6b7280;font-size:14px;">Loading…</div></div>
+      </div>
+
+      <!-- Safety & alerts -->
+      <div class="card">
+        <div class="card-head"><div><h3>Safety events</h3><p>Alert types recorded</p></div></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Type</th><th>Severity</th><th>Count</th></tr></thead>
+            <tbody id="alert-tbody"><tr><td colspan="3" style="text-align:center;color:#6b7280;">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="../script/api.js"></script>
+<script src="../script/toast.js"></script>
+<script src="../script/auth.js"></script>
+<script src="../script/reports.js"></script>
+</body>
+</html>

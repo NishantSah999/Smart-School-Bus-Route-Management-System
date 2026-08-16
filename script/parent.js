@@ -1,6 +1,6 @@
 // SmartBus Parent Dashboard — only the signed-in parent's children, live bus + attendance.
 (() => {
-  if (!auth.guard()) return;
+  if (!auth.guard(['PARENT'])) return;
 
   const $ = (id) => document.getElementById(id);
   const user = api.store.user;

@@ -63,8 +63,8 @@ const Alert = {
   },
   async setStatus(id, status, resolvedBy) {
     const { rows } = await query(
-      `UPDATE alerts SET status = $2, resolved_at = CASE WHEN $2 = 'RESOLVED' THEN now() ELSE resolved_at END,
-         resolved_by = CASE WHEN $2 = 'RESOLVED' THEN $3 ELSE resolved_by END
+      `UPDATE alerts SET status = $2::alert_status, resolved_at = CASE WHEN $2::text = 'RESOLVED' THEN now() ELSE resolved_at END,
+         resolved_by = CASE WHEN $2::text = 'RESOLVED' THEN $3 ELSE resolved_by END
        WHERE id = $1 RETURNING *`,
       [id, status, resolvedBy ?? null]
     );

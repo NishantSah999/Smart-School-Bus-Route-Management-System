@@ -1,6 +1,6 @@
 // SmartBus Driver Dashboard — trip management, GPS, boarding and drowsiness safety system.
 (() => {
-  if (!auth.guard()) return;
+  if (!auth.guard(['DRIVER'])) return;
 
   const $ = (id) => document.getElementById(id);
   const user = api.store.user;

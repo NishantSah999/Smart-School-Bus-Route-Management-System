@@ -1,0 +1,4 @@
+BEGIN;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS school_id INTEGER REFERENCES schools(id) ON DELETE SET NULL;
+CREATE INDEX IF NOT EXISTS idx_users_school ON users(school_id);
+COMMIT;

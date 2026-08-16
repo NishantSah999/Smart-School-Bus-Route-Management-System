@@ -13,9 +13,13 @@ const getById = asyncHandler(async (req, res) => {
   if (!parent) throw new AppError(404, 'Parent not found', 'NOT_FOUND');
   const { query } = require('../config/db');
   const { rows: students } = await query(
-    `SELECT s.*, b.bus_number, r.name AS route_name FROM students s
+    `SELECT s.*, b.bus_number, r.name AS route_name,
+        pst.name AS pickup_stop, dst.name AS drop_stop
+     FROM students s
      LEFT JOIN buses b ON b.id = s.bus_id
      LEFT JOIN routes r ON r.id = s.route_id
+     LEFT JOIN stops pst ON pst.id = s.pickup_stop_id
+     LEFT JOIN stops dst ON dst.id = s.drop_stop_id
      WHERE s.parent_id = $1 ORDER BY s.name`,
     [parent.id]
   );

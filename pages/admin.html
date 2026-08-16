@@ -1,580 +1,411 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SmartBus · School Transportation System</title>
-
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com">
-    </script>
-
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js">
-    </script>
-
-    <!-- Lucide Icons -->
-    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js">
-    </script>
-
-    <!-- Google Font: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
-
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="../style/admin.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartBus — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style/admin.css">
 </head>
 <body>
+<div class="app">
 
-    <!-- ─── Overlay for mobile ─── -->
-    <div id="sidebar-overlay"></div>
-
-    <div id="app">
-
-        <!-- ═══════════ SIDEBAR ═══════════ -->
-        <aside id="sidebar">
-
-            <!-- Brand -->
-            <div class="sidebar-brand">
-                <div class="logo-icon-wrap">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 17V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10" />
-                        <path d="M4 17h16" />
-                        <path d="M6 13h12" />
-                        <path d="M8 9h8" />
-                        <circle cx="8" cy="17" r="2" fill="white" stroke="currentColor" stroke-width="2" />
-                        <circle cx="16" cy="17" r="2" fill="white" stroke="currentColor" stroke-width="2" />
-                        <rect x="2" y="15" width="20" height="2" rx="1" fill="currentColor" stroke="none" />
-                    </svg>
-                </div>
-                <div class="logo-text">Smart<span>Bus</span></div>
-            </div>
-            <div class="sidebar-subtitle" style="padding: 0 20px 12px 20px; margin-top: -6px;">School Transportation System</div>
-
-            <!-- Navigation -->
-            <nav class="nav-scroll">
-                <div class="nav-item active" data-tab="dashboard">
-                    <i data-lucide="layout-dashboard" class="nav-icon" style="width:20px;height:20px;"></i>
-                    <span class="nav-label">Dashboard</span>
-                </div>
-                <div class="nav-item" data-tab="fleet">
-                    <i data-lucide="bus" class="nav-icon" style="width:20px;height:20px;"></i>
-                    <span class="nav-label">Fleet Tracking</span>
-                </div>
-                <div class="nav-item" data-tab="drivers">
-                    <i data-lucide="user-round" class="nav-icon" style="width:20px;height:20px;"></i>
-                    <span class="nav-label">Driver Dashboard</span>
-                </div>
-                <div class="nav-item" data-tab="passengers">
-                    <i data-lucide="users" class="nav-icon" style="width:20px;height:20px;"></i>
-                    <span class="nav-label">Passengers</span>
-                </div>
-                <div class="nav-item" data-tab="alerts">
-                    <i data-lucide="bell" class="nav-icon" style="width:20px;height:20px;"></i>
-                    <span class="nav-label">Alerts</span>
-                    <span class="nav-badge">4</span>
-                </div>
-                <div class="nav-item" data-tab="reports">
-                    <i data-lucide="bar-chart-3" class="nav-icon" style="width:20px;height:20px;"></i>
-                    <span class="nav-label">Reports</span>
-                </div>
-                <div class="nav-item" data-tab="routes">
-                    <i data-lucide="route" class="nav-icon" style="width:20px;height:20px;"></i>
-                    <span class="nav-label">Routes</span>
-                </div>
-                <div class="nav-item" data-tab="maintenance">
-                    <i data-lucide="wrench" class="nav-icon" style="width:20px;height:20px;"></i>
-                    <span class="nav-label">Maintenance</span>
-                </div>
-                <div class="nav-item" data-tab="settings">
-                    <i data-lucide="settings" class="nav-icon" style="width:20px;height:20px;"></i>
-                    <span class="nav-label">Settings</span>
-                </div>
-            </nav>
-
-            <!-- Profile & Collapse -->
-            <div class="profile-section">
-                <div class="profile-avatar">NS</div>
-                <div>
-                    <div class="profile-name">Nishant Sah</div>
-                    <div class="profile-role">Administrator</div>
-                </div>
-                <i data-lucide="chevron-down" class="profile-chevron" style="width:16px;height:16px;"></i>
-                <div class="sidebar-collapse-btn" id="collapseBtn" title="Collapse sidebar">
-                    <i data-lucide="chevron-left" style="width:16px;height:16px;"></i>
-                </div>
-            </div>
-        </aside>
-
-        <!-- ═══════════ MAIN CONTENT ═══════════ -->
-        <main id="main">
-
-            <!-- ─── TOP HEADER ─── -->
-            <header class="flex items-center justify-between py-5 sticky top-0 bg-[#FAFAFA] z-20" style="padding-top:22px; padding-bottom:18px;">
-
-                <div class="flex items-center gap-3">
-                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
-                        <i data-lucide="menu" style="width:22px;height:22px;"></i>
-                    </button>
-                    <div>
-                        <h1 class="text-[23px] font-bold text-[#202124] tracking-tight header-title">Dashboard</h1>
-                        <p class="text-[13px] text-[#777777] font-normal header-sub">Welcome back, Nishant! Here's what's happening today.</p>
-                    </div>
-                </div>
-
-                <div class="flex items-center gap-2.5">
-                    <!-- Search -->
-                    <div class="header-search hidden sm:flex">
-                        <i data-lucide="search" style="width:16px;height:16px;color:#A0A0A0;flex-shrink:0;"></i>
-                        <input type="text" placeholder="Search anything…" />
-                        <span class="kbd">⌘K</span>
-                    </div>
-
-                    <!-- Notifications -->
-                    <button class="header-icon-btn" aria-label="Notifications">
-                        <i data-lucide="bell" style="width:20px;height:20px;"></i>
-                        <span class="badge-dot"></span>
-                    </button>
-
-                    <!-- Fullscreen -->
-                    <button class="header-icon-btn hidden sm:flex" aria-label="Fullscreen" id="fullscreenBtn">
-                        <i data-lucide="maximize" style="width:18px;height:18px;"></i>
-                    </button>
-                </div>
-            </header>
-
-            <!-- ─── STATISTICS ROW ─── -->
-            <section class="stats-grid grid grid-cols-5 gap-4 mb-6" id="statsGrid">
-                <!-- Stat 1 -->
-                <div class="stat-card">
-                    <div class="flex items-start justify-between">
-                        <div>
-                            <div class="stat-label">Total Buses</div>
-                            <div class="stat-number">12</div>
-                            <div class="stat-change mt-0.5">+2 from yesterday</div>
-                        </div>
-                        <div class="stat-icon-wrap bg-green-soft">
-                            <i data-lucide="bus" style="width:20px;height:20px;color:#5CB85C;"></i>
-                        </div>
-                    </div>
-                </div>
-                <!-- Stat 2 -->
-                <div class="stat-card">
-                    <div class="flex items-start justify-between">
-                        <div>
-                            <div class="stat-label">Active Buses</div>
-                            <div class="stat-number">9</div>
-                            <div class="stat-desc mt-0.5">75% of total</div>
-                        </div>
-                        <div class="stat-icon-wrap bg-purple-soft">
-                            <i data-lucide="bus" style="width:20px;height:20px;color:#7067D9;"></i>
-                        </div>
-                    </div>
-                </div>
-                <!-- Stat 3 -->
-                <div class="stat-card">
-                    <div class="flex items-start justify-between">
-                        <div>
-                            <div class="stat-label">Total Passengers</div>
-                            <div class="stat-number">186</div>
-                            <div class="stat-change mt-0.5">+18 from yesterday</div>
-                        </div>
-                        <div class="stat-icon-wrap bg-green-soft">
-                            <i data-lucide="users" style="width:20px;height:20px;color:#5CB85C;"></i>
-                        </div>
-                    </div>
-                </div>
-                <!-- Stat 4 -->
-                <div class="stat-card">
-                    <div class="flex items-start justify-between">
-                        <div>
-                            <div class="stat-label">Active Trips</div>
-                            <div class="stat-number">8</div>
-                            <div class="stat-desc mt-0.5">On going trips</div>
-                        </div>
-                        <div class="stat-icon-wrap bg-purple-soft">
-                            <i data-lucide="navigation" style="width:20px;height:20px;color:#7067D9;"></i>
-                        </div>
-                    </div>
-                </div>
-                <!-- Stat 5 -->
-                <div class="stat-card">
-                    <div class="flex items-start justify-between">
-                        <div>
-                            <div class="stat-label">Safety Alerts</div>
-                            <div class="stat-number">3</div>
-                            <div class="stat-desc mt-0.5">Requires attention</div>
-                        </div>
-                        <div class="stat-icon-wrap bg-red-soft">
-                            <i data-lucide="alert-triangle" style="width:20px;height:20px;color:#E74C3C;"></i>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ─── MAIN GRID: 2 columns ─── -->
-            <div class="main-grid grid grid-cols-12 gap-5">
-
-                <!-- ─── LEFT COLUMN (70%) ─── -->
-                <div class="col-span-12 lg:col-span-8 space-y-5">
-
-                    <!-- Live Fleet Tracking -->
-                    <div class="section-card">
-                        <div class="flex items-center justify-between mb-3">
-                            <div>
-                                <div class="section-title">Live Fleet Tracking</div>
-                                <div class="section-subtitle">Real-time bus locations</div>
-                            </div>
-                            <span class="section-action">View All</span>
-                        </div>
-
-                        <!-- Map -->
-                        <div class="map-container">
-                            <svg viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet">
-                                <!-- Background -->
-                                <rect width="600" height="220" fill="#eef4f7" rx="12" ry="12" />
-
-                                <!-- Subtle grid -->
-                                <g opacity="0.15" stroke="#aaa" stroke-width="0.5" stroke-dasharray="4 4">
-                                    <line x1="0" y1="55" x2="600" y2="55" />
-                                    <line x1="0" y1="110" x2="600" y2="110" />
-                                    <line x1="0" y1="165" x2="600" y2="165" />
-                                    <line x1="150" y1="0" x2="150" y2="220" />
-                                    <line x1="300" y1="0" x2="300" y2="220" />
-                                    <line x1="450" y1="0" x2="450" y2="220" />
-                                </g>
-
-                                <!-- Roads / route lines -->
-                                <path d="M 80 110 Q 200 30, 320 80 T 520 100" stroke="#c8d8e0" stroke-width="3" fill="none" stroke-linecap="round" />
-
-                                <!-- Dashed GPS route -->
-                                <path d="M 80 110 Q 200 30, 320 80 T 520 100" stroke="#5CB85C" stroke-width="2.5" stroke-dasharray="6 5" fill="none" stroke-linecap="round" opacity="0.7" />
-
-                                <!-- Additional subtle route -->
-                                <path d="M 100 140 Q 220 70, 340 110 T 500 70" stroke="#d0dce4" stroke-width="2.5" fill="none" stroke-dasharray="4 6" opacity="0.5" />
-
-                                <!-- School marker -->
-                                <g transform="translate(74, 100)">
-                                    <circle cx="0" cy="0" r="14" fill="#7067D9" stroke="white" stroke-width="2.5" />
-                                    <path d="M-6-4 L0-9 L6-4 L6-4 L6 6 L-6 6 Z" fill="white" stroke="none" />
-                                    <rect x="-4" y="1" width="8" height="5" rx="1" fill="white" stroke="none" />
-                                    <line x1="-6" y1="-4" x2="6" y2="-4" stroke="white" stroke-width="1.5" stroke-linecap="round" />
-                                </g>
-
-                                <!-- School label -->
-                                <text x="94" y="122" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#202124">Sagarmatha School</text>
-
-                                <!-- Distance label -->
-                                <text x="94" y="135" font-family="Inter, sans-serif" font-size="9" font-weight="400" fill="#777777">4.6 km away</text>
-
-                                <!-- Bus marker 1 (green - on route) -->
-                                <g transform="translate(220, 58)">
-                                    <circle cx="0" cy="0" r="12" fill="#5CB85C" stroke="white" stroke-width="2.5" />
-                                    <rect x="-6" y="-5" width="12" height="8" rx="2" fill="white" opacity="0.9" />
-                                    <circle cx="-3" cy="2" r="2" fill="#5CB85C" stroke="white" stroke-width="1" />
-                                    <circle cx="3" cy="2" r="2" fill="#5CB85C" stroke="white" stroke-width="1" />
-                                    <rect x="-5" y="-3" width="10" height="2" rx="1" fill="#5CB85C" opacity="0.6" />
-                                </g>
-
-                                <!-- Bus marker 2 (purple - at stop) -->
-                                <g transform="translate(380, 88)">
-                                    <circle cx="0" cy="0" r="12" fill="#7067D9" stroke="white" stroke-width="2.5" />
-                                    <rect x="-6" y="-5" width="12" height="8" rx="2" fill="white" opacity="0.9" />
-                                    <circle cx="-3" cy="2" r="2" fill="#7067D9" stroke="white" stroke-width="1" />
-                                    <circle cx="3" cy="2" r="2" fill="#7067D9" stroke="white" stroke-width="1" />
-                                    <rect x="-5" y="-3" width="10" height="2" rx="1" fill="#7067D9" opacity="0.6" />
-                                </g>
-
-                                <!-- Bus marker 3 (green - on route) -->
-                                <g transform="translate(490, 96)">
-                                    <circle cx="0" cy="0" r="12" fill="#5CB85C" stroke="white" stroke-width="2.5" />
-                                    <rect x="-6" y="-5" width="12" height="8" rx="2" fill="white" opacity="0.9" />
-                                    <circle cx="-3" cy="2" r="2" fill="#5CB85C" stroke="white" stroke-width="1" />
-                                    <circle cx="3" cy="2" r="2" fill="#5CB85C" stroke="white" stroke-width="1" />
-                                    <rect x="-5" y="-3" width="10" height="2" rx="1" fill="#5CB85C" opacity="0.6" />
-                                </g>
-
-                                <!-- Small gray bus (idle) -->
-                                <g transform="translate(290, 150)">
-                                    <circle cx="0" cy="0" r="9" fill="#b0b8c0" stroke="white" stroke-width="2" />
-                                    <rect x="-4.5" y="-4" width="9" height="6" rx="1.5" fill="white" opacity="0.85" />
-                                    <circle cx="-2" cy="1.5" r="1.5" fill="#b0b8c0" stroke="white" stroke-width="0.8" />
-                                    <circle cx="2" cy="1.5" r="1.5" fill="#b0b8c0" stroke="white" stroke-width="0.8" />
-                                </g>
-
-                                <!-- Zoom controls -->
-                                <g transform="translate(560, 12)">
-                                    <rect x="0" y="0" width="28" height="28" rx="6" fill="white" stroke="#e0e0e0" stroke-width="1" />
-                                    <text x="14" y="19" font-family="Inter, sans-serif" font-size="16" font-weight="300" fill="#555" text-anchor="middle">+</text>
-                                    <rect x="0" y="34" width="28" height="28" rx="6" fill="white" stroke="#e0e0e0" stroke-width="1" />
-                                    <text x="14" y="53" font-family="Inter, sans-serif" font-size="16" font-weight="300" fill="#555" text-anchor="middle">−</text>
-                                </g>
-
-                                <!-- Destination marker (green) -->
-                                <g transform="translate(520, 108)">
-                                    <circle cx="0" cy="0" r="8" fill="#5CB85C" stroke="white" stroke-width="2" />
-                                    <circle cx="0" cy="0" r="3" fill="white" opacity="0.8" />
-                                </g>
-                            </svg>
-                            <!-- Distance label (overlay) -->
-                            <div class="map-distance-label">
-                                <span class="flex items-center gap-1.5">
-                                    <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#5CB85C;"></span>
-                                    Sagarmatha School · 4.6 km
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Legend -->
-                        <div class="map-legend">
-                            <span class="legend-label"><span class="legend-dot" style="background:#5CB85C;"></span> On Route</span>
-                            <span class="legend-label"><span class="legend-dot" style="background:#7067D9;"></span> At Stop</span>
-                            <span class="legend-label"><span class="legend-dot" style="background:#b0b8c0;"></span> Idle</span>
-                            <span class="legend-label"><span class="legend-dot" style="background:#E74C3C;"></span> Maintenance</span>
-                        </div>
-                    </div>
-
-                    <!-- Next Arrivals + Fleet Status (2 cols) -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-
-                        <!-- Next Arrivals -->
-                        <div class="section-card">
-                            <div class="flex items-center justify-between mb-2">
-                                <div>
-                                    <div class="section-title">Next Arrivals</div>
-                                    <div class="section-subtitle">Upcoming bus arrivals</div>
-                                </div>
-                                <span class="section-action">View All</span>
-                            </div>
-
-                            <div>
-                                <!-- Arrival 1 -->
-                                <div class="arrival-row">
-                                    <div class="arrival-icon bg-green-soft">
-                                        <i data-lucide="bus" style="width:16px;height:16px;color:#5CB85C;"></i>
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <div class="arrival-name">Bus 04</div>
-                                        <div class="arrival-route">Route A • 2.4 km away</div>
-                                    </div>
-                                    <div class="text-right flex flex-col items-end">
-                                        <div class="arrival-time">08:32 AM</div>
-                                        <div class="arrival-min">5 min</div>
-                                    </div>
-                                </div>
-                                <!-- Arrival 2 -->
-                                <div class="arrival-row">
-                                    <div class="arrival-icon bg-purple-soft">
-                                        <i data-lucide="bus" style="width:16px;height:16px;color:#7067D9;"></i>
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <div class="arrival-name">Bus 07</div>
-                                        <div class="arrival-route">Route B • 1.1 km away</div>
-                                    </div>
-                                    <div class="text-right flex flex-col items-end">
-                                        <div class="arrival-time">08:35 AM</div>
-                                        <div class="arrival-min">8 min</div>
-                                    </div>
-                                </div>
-                                <!-- Arrival 3 -->
-                                <div class="arrival-row">
-                                    <div class="arrival-icon bg-green-soft">
-                                        <i data-lucide="bus" style="width:16px;height:16px;color:#5CB85C;"></i>
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <div class="arrival-name">Bus 02</div>
-                                        <div class="arrival-route">Route C • 500 m away</div>
-                                    </div>
-                                    <div class="text-right flex flex-col items-end">
-                                        <div class="arrival-time">08:37 AM</div>
-                                        <div class="arrival-min">10 min</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Fleet Status -->
-                        <div class="section-card">
-                            <div class="flex items-center justify-between mb-2">
-                                <div>
-                                    <div class="section-title">Fleet Status</div>
-                                    <div class="section-subtitle">Overview of all buses</div>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center justify-between gap-4">
-                                <!-- Donut -->
-                                <div class="donut-wrapper" style="width:130px;height:130px;">
-                                    <canvas id="fleetDonut" width="130" height="130"></canvas>
-                                    <div class="donut-center">
-                                        <span class="num">12</span>
-                                        <span class="label">Total</span>
-                                    </div>
-                                </div>
-
-                                <!-- Legend -->
-                                <div class="flex-1 space-y-1.5">
-                                    <div class="fleet-legend-item">
-                                        <span class="fleet-legend-dot" style="background:#5CB85C;"></span>
-                                        <span class="fleet-legend-label">Active</span>
-                                        <span class="fleet-legend-pct">9 (75%)</span>
-                                    </div>
-                                    <div class="fleet-legend-item">
-                                        <span class="fleet-legend-dot" style="background:#7067D9;"></span>
-                                        <span class="fleet-legend-label">Idle</span>
-                                        <span class="fleet-legend-pct">2 (17%)</span>
-                                    </div>
-                                    <div class="fleet-legend-item">
-                                        <span class="fleet-legend-dot" style="background:#E74C3C;"></span>
-                                        <span class="fleet-legend-label">Maintenance</span>
-                                        <span class="fleet-legend-pct">1 (8%)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Recent Activity -->
-                    <div class="section-card">
-                        <div class="flex items-center justify-between mb-3">
-                            <div>
-                                <div class="section-title">Recent Activity</div>
-                            </div>
-                            <span class="section-action">View All</span>
-                        </div>
-
-                        <div class="space-y-0.5">
-                            <div class="activity-row">
-                                <span class="activity-dot" style="background:#5CB85C;"></span>
-                                <span class="activity-text">Bus 04 started trip</span>
-                                <span class="activity-sub">Route A</span>
-                                <span class="activity-time">5 min ago</span>
-                            </div>
-                            <div class="activity-row">
-                                <span class="activity-dot" style="background:#7067D9;"></span>
-                                <span class="activity-text">Driver check-in</span>
-                                <span class="activity-sub">Ram Kumar</span>
-                                <span class="activity-time">15 min ago</span>
-                            </div>
-                            <div class="activity-row">
-                                <span class="activity-dot" style="background:#5CB85C;"></span>
-                                <span class="activity-text">Bus 02 completed trip</span>
-                                <span class="activity-sub">Route C</span>
-                                <span class="activity-time">25 min ago</span>
-                            </div>
-                            <div class="activity-row">
-                                <span class="activity-dot" style="background:#F59E0B;"></span>
-                                <span class="activity-text">Maintenance scheduled</span>
-                                <span class="activity-sub">Bus 08</span>
-                                <span class="activity-time">1 hour ago</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ─── RIGHT COLUMN (30%) ─── -->
-                <div class="col-span-12 lg:col-span-4 space-y-5">
-
-                    <!-- Recent Alerts -->
-                    <div class="section-card">
-                        <div class="flex items-center justify-between mb-2">
-                            <div>
-                                <div class="section-title">Recent Alerts</div>
-                            </div>
-                            <span class="section-action">View All</span>
-                        </div>
-
-                        <!-- Alert 1 -->
-                        <div class="alert-row">
-                            <div class="alert-icon-wrap bg-red-soft">
-                                <i data-lucide="alert-triangle" style="width:16px;height:16px;color:#E74C3C;"></i>
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <div class="alert-title">Driver Drowsiness Detected</div>
-                                <div class="alert-subtitle">Bus 04 • Ram Kumar</div>
-                            </div>
-                            <span class="alert-time">2m ago</span>
-                        </div>
-
-                        <!-- Alert 2 -->
-                        <div class="alert-row">
-                            <div class="alert-icon-wrap bg-orange-soft">
-                                <i data-lucide="alert-triangle" style="width:16px;height:16px;color:#F59E0B;"></i>
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <div class="alert-title">High Speed Alert</div>
-                                <div class="alert-subtitle">Bus 07 • 78 km/h</div>
-                            </div>
-                            <span class="alert-time">5m ago</span>
-                        </div>
-
-                        <!-- Alert 3 -->
-                        <div class="alert-row">
-                            <div class="alert-icon-wrap bg-purple-soft">
-                                <i data-lucide="users" style="width:16px;height:16px;color:#7067D9;"></i>
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <div class="alert-title">Bus Approaching School</div>
-                                <div class="alert-subtitle">Bus 02 • 500m away</div>
-                            </div>
-                            <span class="alert-time">10m ago</span>
-                        </div>
-
-                        <div class="mt-2 pt-1 text-right">
-                            <span class="section-action">See all alerts →</span>
-                        </div>
-                    </div>
-
-                    <!-- Quick Actions -->
-                    <div class="section-card">
-                        <div class="flex items-center justify-between mb-3">
-                            <div>
-                                <div class="section-title">Quick Actions</div>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="quick-action">
-                                <div class="quick-action-icon bg-green-soft">
-                                    <i data-lucide="plus" style="width:18px;height:18px;color:#5CB85C;"></i>
-                                </div>
-                                <span class="quick-action-label">Add Bus</span>
-                            </div>
-                            <div class="quick-action">
-                                <div class="quick-action-icon bg-purple-soft">
-                                    <i data-lucide="user-round" style="width:18px;height:18px;color:#7067D9;"></i>
-                                </div>
-                                <span class="quick-action-label">Add Driver</span>
-                            </div>
-                            <div class="quick-action">
-                                <div class="quick-action-icon bg-green-soft">
-                                    <i data-lucide="route" style="width:18px;height:18px;color:#5CB85C;"></i>
-                                </div>
-                                <span class="quick-action-label">Add Route</span>
-                            </div>
-                            <div class="quick-action">
-                                <div class="quick-action-icon bg-red-soft">
-                                    <i data-lucide="bell" style="width:18px;height:18px;color:#E74C3C;"></i>
-                                </div>
-                                <span class="quick-action-label">Send Notification</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Quick tip: extra spacing helper -->
-                    <div class="hidden lg:block" style="height:4px;"></div>
-                </div>
-            </div>
-
-            <!-- footer spacing -->
-            <div style="height:12px;"></div>
-
-        </main>
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/>
+          <path d="M4 11h16"/>
+          <circle cx="7.5" cy="17.5" r="0.4"/>
+          <circle cx="16.5" cy="17.5" r="0.4"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="name">SmartBus</div>
+        <div class="sub">School Transport System</div>
+      </div>
     </div>
 
-    <!-- ─── Custom JavaScript ─── -->
-    <script src="../script/script.js" defer></script>
+    <nav class="menu">
+      <a class="nav-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
+        Dashboard
+      </a>
+      <a class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg>
+        Fleet Tracking
+      </a>
+      <a class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+        Driver Dashboard
+      </a>
+      <a class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Passengers
+      </a>
+      <a class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        Alerts
+        <span class="nav-badge">4</span>
+      </a>
+      <a class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/><path d="M9 13h6M9 17h4"/></svg>
+        Reports
+      </a>
+      <a class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8.5 19H15a4 4 0 0 0 4-4V6.5"/></svg>
+        Routes
+      </a>
+      <a class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.1-3.1a4 4 0 0 1-5.7 5.7L6.3 20.7a1.6 1.6 0 0 1-2.3-2.3L12.7 9.6a4 4 0 0 1 5.7-5.7l-3.1 3.1z"/></svg>
+        Maintenance
+      </a>
+      <a class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+        Settings
+      </a>
+    </nav>
+
+    <div class="sidebar-spacer"></div>
+
+    <div class="profile-card">
+      <img src="https://i.pravatar.cc/80?img=13" alt="Nishant Sah">
+      <div class="profile-meta">
+        <div class="pname">Nishant Sah</div>
+        <div class="prole">Administrator</div>
+      </div>
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+
+    <div class="collapse-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <main class="main">
+
+    <div class="topbar">
+      <div>
+        <h1>Dashboard</h1>
+        <p class="welcome">Welcome back, Nishant! Here's what's happening today.</p>
+      </div>
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" placeholder="Search anything...">
+        <span class="kbd">⌘K</span>
+      </div>
+      <div class="top-actions">
+        <div class="icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="dot-badge">6</span>
+        </div>
+        <div class="icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stat cards -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-top">
+          <span class="stat-label">Total Buses</span>
+          <div class="stat-icon icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/><path d="M4 11h16"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">12</div>
+        <div class="stat-foot">+2 from yesterday</div>
+      </div>
+
+      <div class="stat-card accent-purple">
+        <div class="stat-top">
+          <span class="stat-label">Active Buses</span>
+          <div class="stat-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="10" rx="2"/><circle cx="7.5" cy="17.5" r="1.2"/><circle cx="16.5" cy="17.5" r="1.2"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">9</div>
+        <div class="stat-foot muted">75% of total</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-top">
+          <span class="stat-label">Total Passengers</span>
+          <div class="stat-icon icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">186</div>
+        <div class="stat-foot">+18 from yesterday</div>
+      </div>
+
+      <div class="stat-card accent-purple">
+        <div class="stat-top">
+          <span class="stat-label">Active Trips</span>
+          <div class="stat-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">8</div>
+        <div class="stat-foot muted">On going trips</div>
+      </div>
+
+      <div class="stat-card accent-red">
+        <div class="stat-top">
+          <span class="stat-label">Safety Alerts</span>
+          <div class="stat-icon icon-red">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">3</div>
+        <div class="stat-foot danger">Requires attention</div>
+      </div>
+    </div>
+
+    <!-- Map + Alerts -->
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h3>Live Fleet Tracking</h3>
+            <p>Real-time bus locations</p>
+          </div>
+          <a class="link" href="#">View All</a>
+        </div>
+
+        <div class="map-box">
+          <svg class="roads" viewBox="0 0 900 290" preserveAspectRatio="none">
+            <path d="M120 220 C 250 150, 320 90, 430 100 C 540 108, 560 150, 680 155" class="route-dash"/>
+            <path d="M0 60 C 200 40, 400 80, 900 55" stroke="#ffffff" stroke-width="10" fill="none" opacity="0.5"/>
+            <path d="M0 200 C 250 230, 500 190, 900 210" stroke="#ffffff" stroke-width="14" fill="none" opacity="0.45"/>
+          </svg>
+
+          <div class="marker m-green" style="top:35%; left:15%;">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/><path d="M4 11h16"/></svg>
+          </div>
+          <div class="marker m-green" style="top:38%; left:53%;">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/><path d="M4 11h16"/></svg>
+          </div>
+          <div class="marker m-green" style="top:75%; left:8%;">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/><path d="M4 11h16"/></svg>
+          </div>
+          <div class="marker m-purple" style="top:60%; left:32%;">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="10" rx="2"/><circle cx="7.5" cy="17.5" r="1.2"/><circle cx="16.5" cy="17.5" r="1.2"/></svg>
+          </div>
+
+          <div class="school-dot" style="top:53%; left:63%;"></div>
+
+          <div class="school-pin" style="top:44%; left:66%;">
+            <div class="sp-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg>
+            </div>
+            <div class="sp-text">
+              <div class="t1">Sagarmatha School</div>
+              <div class="t2">Main Building</div>
+            </div>
+          </div>
+
+          <div class="map-controls">
+            <button>+</button>
+            <button>&minus;</button>
+          </div>
+        </div>
+
+        <div class="legend">
+          <div class="legend-item"><span class="legend-dot" style="background:#22c55e"></span>On Route</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#8b5cf6"></span>At Stop</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#9ca3af"></span>Idle</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#ef4444"></span>Maintenance</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Recent Alerts</h3>
+          <a class="link" href="#">View All</a>
+        </div>
+
+        <div class="alert-item bg-red">
+          <div class="alert-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg></div>
+          <div class="alert-body">
+            <div class="alert-title">Driver Drowsiness Detected</div>
+            <div class="alert-meta">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/></svg>
+              Bus 04 &nbsp;&bull;&nbsp; Ram Kumar
+            </div>
+          </div>
+          <div class="alert-time">2m ago</div>
+        </div>
+
+        <div class="alert-item bg-orange">
+          <div class="alert-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
+          <div class="alert-body">
+            <div class="alert-title">High Speed Alert</div>
+            <div class="alert-meta">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/></svg>
+              Bus 07 &nbsp;&bull;&nbsp; 78 km/h
+            </div>
+          </div>
+          <div class="alert-time">8m ago</div>
+        </div>
+
+        <div class="alert-item bg-purple">
+          <div class="alert-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+          <div class="alert-body">
+            <div class="alert-title">Bus Approaching School</div>
+            <div class="alert-meta">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/></svg>
+              Bus 02 &nbsp;&bull;&nbsp; 500m away
+            </div>
+          </div>
+          <div class="alert-time">12m ago</div>
+        </div>
+
+        <a class="see-all" href="#">See all alerts &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Next Arrivals / Fleet Status / Quick Actions -->
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h3>Next Arrivals</h3>
+            <p>Upcoming bus arrivals</p>
+          </div>
+          <a class="link" href="#">View All</a>
+        </div>
+
+        <div class="arrival-item">
+          <div class="arrival-ico icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/></svg></div>
+          <div class="arrival-body">
+            <div class="arrival-bus">Bus 04</div>
+            <div class="arrival-route">Route A &nbsp;&bull;&nbsp; 2.4 km away</div>
+          </div>
+          <div class="arrival-time"><div class="t">08:32 AM</div><div class="m">5 min</div></div>
+        </div>
+
+        <div class="arrival-item">
+          <div class="arrival-ico icon-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="10" rx="2"/><circle cx="7.5" cy="17.5" r="1.2"/><circle cx="16.5" cy="17.5" r="1.2"/></svg></div>
+          <div class="arrival-body">
+            <div class="arrival-bus">Bus 07</div>
+            <div class="arrival-route">Route B &nbsp;&bull;&nbsp; 1.1 km away</div>
+          </div>
+          <div class="arrival-time"><div class="t">08:35 AM</div><div class="m">8 min</div></div>
+        </div>
+
+        <div class="arrival-item">
+          <div class="arrival-ico icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/></svg></div>
+          <div class="arrival-body">
+            <div class="arrival-bus">Bus 02</div>
+            <div class="arrival-route">Route C &nbsp;&bull;&nbsp; 500 m away</div>
+          </div>
+          <div class="arrival-time"><div class="t">08:37 AM</div><div class="m">10 min</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h3>Fleet Status</h3>
+            <p>Overview of all buses</p>
+          </div>
+        </div>
+        <div class="donut-wrap">
+          <svg width="170" height="170" viewBox="0 0 170 170">
+            <circle cx="85" cy="85" r="68" fill="none" stroke="#eceef2" stroke-width="20"/>
+            <circle cx="85" cy="85" r="68" fill="none" stroke="#22c55e" stroke-width="20"
+              stroke-dasharray="320.4 427.2" stroke-dashoffset="0" transform="rotate(-90 85 85)" stroke-linecap="round"/>
+            <circle cx="85" cy="85" r="68" fill="none" stroke="#8b5cf6" stroke-width="20"
+              stroke-dasharray="68.3 427.2" stroke-dashoffset="-320.4" transform="rotate(-90 85 85)" stroke-linecap="round"/>
+            <circle cx="85" cy="85" r="68" fill="none" stroke="#ef4444" stroke-width="20"
+              stroke-dasharray="34.2 427.2" stroke-dashoffset="-388.7" transform="rotate(-90 85 85)" stroke-linecap="round"/>
+          </svg>
+          <div class="donut-center-label" style="margin-top:-108px; margin-bottom:70px;">
+            <div class="big">12</div>
+            <div class="small">Total</div>
+          </div>
+          <div class="donut-legend">
+            <div class="donut-legend-row"><span class="sw" style="background:#22c55e"></span>Active <span class="val">9 (75%)</span></div>
+            <div class="donut-legend-row"><span class="sw" style="background:#8b5cf6"></span>Idle <span class="val">2 (16%)</span></div>
+            <div class="donut-legend-row"><span class="sw" style="background:#ef4444"></span>Maintenance <span class="val">1 (8%)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Quick Actions</h3>
+        </div>
+        <div class="qa-grid">
+          <button class="qa-btn qa-green">
+            <span class="qa-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            Add Bus
+          </button>
+          <button class="qa-btn qa-purple">
+            <span class="qa-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></span>
+            Add Driver
+          </button>
+          <button class="qa-btn qa-blue">
+            <span class="qa-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg></span>
+            Add Route
+          </button>
+          <button class="qa-btn qa-red">
+            <span class="qa-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span>
+            Send Notification
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="card">
+      <div class="card-head">
+        <h3>Recent Activity</h3>
+      </div>
+      <div class="activity-row">
+        <div class="activity-item">
+          <span class="activity-dot" style="background:#22c55e"></span>
+          <div>
+            <div class="activity-title">Bus 04 started trip</div>
+            <div class="activity-sub">Route A</div>
+            <div class="activity-time">5 min ago</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <span class="activity-dot" style="background:#8b5cf6"></span>
+          <div>
+            <div class="activity-title">Driver check-in</div>
+            <div class="activity-sub">Ram Kumar</div>
+            <div class="activity-time">15 min ago</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <span class="activity-dot" style="background:#22c55e"></span>
+          <div>
+            <div class="activity-title">Bus 02 completed trip</div>
+            <div class="activity-sub">Route C</div>
+            <div class="activity-time">25 min ago</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <span class="activity-dot" style="background:#ef4444"></span>
+          <div>
+            <div class="activity-title">Maintenance scheduled</div>
+            <div class="activity-sub">Bus 08</div>
+            <div class="activity-time">1 hour ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="../script/script.js"></script>
 </body>
 </html>

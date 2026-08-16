@@ -13,7 +13,8 @@ const Bus = {
     const countRes = await query(`SELECT count(*)::int AS total FROM buses b ${where}`, params);
     const { offset } = buildPagination({ page, limit });
     const rowsRes = await query(
-      `SELECT b.*, d.name AS driver_name, r.name AS route_name
+      `SELECT b.*, d.name AS driver_name, r.id AS route_id, r.name AS route_name,
+        (SELECT count(*)::int FROM students s WHERE s.bus_id = b.id) AS passenger_count
        FROM buses b
        LEFT JOIN drivers d ON d.id = b.driver_id
        LEFT JOIN routes r ON r.id = (SELECT route_id FROM trips t WHERE t.bus_id = b.id AND t.status='ACTIVE' LIMIT 1)

@@ -8,11 +8,14 @@ const Alert = require('../models/Alert');
 const AuditLog = require('../models/AuditLog');
 const AppError = require('../utils/AppError');
 const asyncHandler = require('../utils/asyncHandler');
+const { scopeDriver } = require('../utils/roleScope');
 
 const list = asyncHandler(async (req, res) => {
+  const scope = await scopeDriver(req);
   const data = await Bus.list({
     page: req.query.page, limit: req.query.limit, search: req.query.search,
-    status: req.query.status, school_id: req.query.school_id || req.user.school_id, driver_id: req.query.driver_id,
+    status: req.query.status, school_id: req.query.school_id || req.user.school_id,
+    driver_id: scope.driver_id || req.query.driver_id,
   });
   res.status(200).json({ data });
 });

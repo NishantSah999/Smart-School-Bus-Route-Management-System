@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SmartBus — Alerts</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style/admin.css">
-<link rel="stylesheet" href="../style/alerts.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartBus — Alerts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style/admin.css">
+  <link rel="stylesheet" href="../style/alerts.css">
 </head>
 <body>
 <div class="app">
@@ -30,40 +30,40 @@
     </div>
 
     <nav class="menu">
-      <a class="nav-item">
+      <a class="nav-item" href="dashboard.html">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
         Dashboard
       </a>
-      <a class="nav-item">
+      <a class="nav-item" href="Fleet-Tracking.html">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg>
         Fleet Tracking
       </a>
-      <a class="nav-item">
+      <a class="nav-item" href="driver.html">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
         Driver Dashboard
       </a>
-      <a class="nav-item">
+      <a class="nav-item" href="passenger.html">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         Passengers
       </a>
-      <a class="nav-item active">
+      <a class="nav-item active" href="alerts.html">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
         Alerts
-        <span class="nav-badge">4</span>
+        <span class="nav-badge" id="tab-badge-unresolved-nav">0</span>
       </a>
-      <a class="nav-item">
+      <a class="nav-item" href="reports.html">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/><path d="M9 13h6M9 17h4"/></svg>
         Reports
       </a>
-      <a class="nav-item">
+      <a class="nav-item" href="#">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8.5 19H15a4 4 0 0 0 4-4V6.5"/></svg>
         Routes
       </a>
-      <a class="nav-item">
+      <a class="nav-item" href="#">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.1-3.1a4 4 0 0 1-5.7 5.7L6.3 20.7a1.6 1.6 0 0 1-2.3-2.3L12.7 9.6a4 4 0 0 1 5.7-5.7l-3.1 3.1z"/></svg>
         Maintenance
       </a>
-      <a class="nav-item">
+      <a class="nav-item" href="#">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
         Settings
       </a>
@@ -77,7 +77,7 @@
         <div class="pname">Nishant Sah</div>
         <div class="prole">Administrator</div>
       </div>
-      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      <a class="logout-link" href="#" data-logout style="margin-left:auto; font-size:12px; font-weight:600; color:var(--red); text-decoration:none;">Sign out</a>
     </div>
 
     <div class="collapse-btn">
@@ -94,19 +94,16 @@
         <p class="welcome">Monitor and manage all system alerts and notifications</p>
       </div>
       <div class="search-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-        <input type="text" placeholder="Search alert, bus, driver, location...">
-        <span class="kbd">⌘K</span>
+        <svg id="search-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor:pointer;"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="search-input" placeholder="Search alert message...">
+        <span class="kbd">Enter</span>
       </div>
       <div class="top-actions">
         <div class="icon-btn">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-          <span class="dot-badge">6</span>
+          <span class="dot-badge" id="tab-badge-unresolved-top">0</span>
         </div>
-        <div class="icon-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
-        </div>
-        <button class="btn-export">
+        <button class="btn-export" id="btn-export">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
           Export
         </button>
@@ -122,8 +119,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg>
           </div>
         </div>
-        <div class="stat-value">3</div>
-        <div class="stat-foot danger">Requires immediate action</div>
+        <div class="stat-value" id="stat-critical">—</div>
+        <div class="stat-foot danger" id="stat-critical-foot">Loading…</div>
       </div>
 
       <div class="stat-card accent-orange">
@@ -133,8 +130,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg>
           </div>
         </div>
-        <div class="stat-value">8</div>
-        <div class="stat-foot warning">Needs attention</div>
+        <div class="stat-value" id="stat-warning">—</div>
+        <div class="stat-foot warning" id="stat-warning-foot">Loading…</div>
       </div>
 
       <div class="stat-card accent-purple">
@@ -144,8 +141,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
           </div>
         </div>
-        <div class="stat-value">15</div>
-        <div class="stat-foot muted">General notifications</div>
+        <div class="stat-value" id="stat-info">—</div>
+        <div class="stat-foot muted" id="stat-info-foot">Loading…</div>
       </div>
 
       <div class="stat-card">
@@ -155,8 +152,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
           </div>
         </div>
-        <div class="stat-value">12</div>
-        <div class="stat-foot">+3 from yesterday</div>
+        <div class="stat-value" id="stat-resolved">—</div>
+        <div class="stat-foot" id="stat-resolved-foot">Loading…</div>
       </div>
 
       <div class="stat-card">
@@ -166,7 +163,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
           </div>
         </div>
-        <div class="stat-value">26</div>
+        <div class="stat-value" id="stat-total">—</div>
         <div class="stat-foot muted">Today</div>
       </div>
     </div>
@@ -174,33 +171,38 @@
     <!-- Toolbar: status tabs + filters -->
     <div class="alerts-toolbar">
       <div class="status-tabs">
-        <button class="status-tab active">All Alerts</button>
-        <button class="status-tab">Unresolved <span class="tab-badge">11</span></button>
-        <button class="status-tab">Resolved</button>
+        <button class="status-tab active" data-status="">All Alerts</button>
+        <button class="status-tab" data-status="OPEN">Unresolved <span class="tab-badge" id="tab-badge-unresolved">0</span></button>
+        <button class="status-tab" data-status="RESOLVED">Resolved</button>
       </div>
 
-      <div class="filter-select">
-        All Types
-        <svg class="chev-down" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-      </div>
-      <div class="filter-select">
-        All Buses
-        <svg class="chev-down" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-      </div>
-      <div class="filter-select">
-        All Drivers
-        <svg class="chev-down" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-      </div>
-      <div class="filter-select">
-        All Severity
-        <svg class="chev-down" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-      </div>
-      <div class="filter-select date">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        Today
-      </div>
+      <select class="filter-select" id="filter-type">
+        <option value="">All Types</option>
+        <option value="SPEEDING">Speeding</option>
+        <option value="GEOFENCE">Geofence</option>
+        <option value="DROWSINESS">Drowsiness</option>
+        <option value="EMERGENCY">Emergency</option>
+        <option value="MAINTENANCE">Maintenance</option>
+      </select>
 
-      <a class="clear-filters">Clear Filters</a>
+      <select class="filter-select" id="filter-bus">
+        <option value="">All Buses</option>
+      </select>
+
+      <select class="filter-select" id="filter-driver">
+        <option value="">All Drivers</option>
+      </select>
+
+      <select class="filter-select" id="filter-severity">
+        <option value="">All Severity</option>
+        <option value="CRITICAL">Critical</option>
+        <option value="WARNING">Warning</option>
+        <option value="INFO">Info</option>
+      </select>
+
+      <input type="date" class="filter-select date" id="filter-date">
+
+      <a class="clear-filters" id="clear-filters">Clear Filters</a>
     </div>
 
     <!-- Alerts table -->
@@ -209,7 +211,7 @@
         <table class="alerts-table">
           <thead>
             <tr>
-              <th><input type="checkbox" class="chk"></th>
+              <th><input type="checkbox" class="chk" id="select-all-chk"></th>
               <th>Alert</th>
               <th>Bus &amp; Driver</th>
               <th>Location</th>
@@ -219,223 +221,25 @@
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
-
-            <tr>
-              <td><input type="checkbox" class="chk"></td>
-              <td>
-                <div class="alert-cell">
-                  <div class="alert-cell-ico icon-red"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg></div>
-                  <div class="alert-cell-body">
-                    <div class="alert-cell-title">Driver Drowsiness Detected</div>
-                    <div class="alert-cell-sub">Drowsiness detected for more than 5 sec</div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="bd-cell">
-                  <div class="bd-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/><path d="M4 11h16"/></svg></div>
-                  <div>
-                    <div class="bd-bus">Bus 04</div>
-                    <div class="bd-driver">Ram Kumar</div>
-                  </div>
-                </div>
-              </td>
-              <td class="loc-cell">
-                <div class="loc-main">Godar Road, Dhanusha</div>
-                <div class="loc-sub">2.4 km from school</div>
-              </td>
-              <td class="time-cell">2 min ago<br>08:32 AM</td>
-              <td><span class="pill pill-critical">Critical</span></td>
-              <td><span class="pill pill-unresolved">Unresolved</span></td>
-              <td><button class="row-menu">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
-              </button></td>
-            </tr>
-
-            <tr>
-              <td><input type="checkbox" class="chk"></td>
-              <td>
-                <div class="alert-cell">
-                  <div class="alert-cell-ico icon-orange"><svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
-                  <div class="alert-cell-body">
-                    <div class="alert-cell-title">High Speed Alert</div>
-                    <div class="alert-cell-sub">Bus exceeded speed limit (78 km/h)</div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="bd-cell">
-                  <div class="bd-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/><path d="M4 11h16"/></svg></div>
-                  <div>
-                    <div class="bd-bus">Bus 07</div>
-                    <div class="bd-driver">Suresh Yadav</div>
-                  </div>
-                </div>
-              </td>
-              <td class="loc-cell">
-                <div class="loc-main">Janakpur Highway</div>
-                <div class="loc-sub">5.1 km from school</div>
-              </td>
-              <td class="time-cell">8 min ago<br>08:26 AM</td>
-              <td><span class="pill pill-warning">Warning</span></td>
-              <td><span class="pill pill-unresolved">Unresolved</span></td>
-              <td><button class="row-menu">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
-              </button></td>
-            </tr>
-
-            <tr>
-              <td><input type="checkbox" class="chk"></td>
-              <td>
-                <div class="alert-cell">
-                  <div class="alert-cell-ico icon-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div>
-                  <div class="alert-cell-body">
-                    <div class="alert-cell-title">Bus Approaching School</div>
-                    <div class="alert-cell-sub">Bus is 500m away from school</div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="bd-cell">
-                  <div class="bd-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/><path d="M4 11h16"/></svg></div>
-                  <div>
-                    <div class="bd-bus">Bus 02</div>
-                    <div class="bd-driver">Mohan Thapa</div>
-                  </div>
-                </div>
-              </td>
-              <td class="loc-cell">
-                <div class="loc-main">Sagarmatha School</div>
-                <div class="loc-sub">500 m from school</div>
-              </td>
-              <td class="time-cell">12 min ago<br>08:22 AM</td>
-              <td><span class="pill pill-info">Info</span></td>
-              <td><span class="pill pill-resolved">Resolved</span></td>
-              <td><button class="row-menu">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
-              </button></td>
-            </tr>
-
-            <tr>
-              <td><input type="checkbox" class="chk"></td>
-              <td>
-                <div class="alert-cell">
-                  <div class="alert-cell-ico icon-red"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg></div>
-                  <div class="alert-cell-body">
-                    <div class="alert-cell-title">Emergency Button Pressed</div>
-                    <div class="alert-cell-sub">Driver pressed emergency button</div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="bd-cell">
-                  <div class="bd-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/><path d="M4 11h16"/></svg></div>
-                  <div>
-                    <div class="bd-bus">Bus 01</div>
-                    <div class="bd-driver">Raju Shah</div>
-                  </div>
-                </div>
-              </td>
-              <td class="loc-cell">
-                <div class="loc-main">Main Street, Janakpur</div>
-                <div class="loc-sub">3.2 km from school</div>
-              </td>
-              <td class="time-cell">18 min ago<br>08:16 AM</td>
-              <td><span class="pill pill-critical">Critical</span></td>
-              <td><span class="pill pill-resolved">Resolved</span></td>
-              <td><button class="row-menu">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
-              </button></td>
-            </tr>
-
-            <tr>
-              <td><input type="checkbox" class="chk"></td>
-              <td>
-                <div class="alert-cell">
-                  <div class="alert-cell-ico icon-orange"><svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
-                  <div class="alert-cell-body">
-                    <div class="alert-cell-title">Sudden Braking Detected</div>
-                    <div class="alert-cell-sub">Sudden braking event detected</div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="bd-cell">
-                  <div class="bd-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/><path d="M4 11h16"/></svg></div>
-                  <div>
-                    <div class="bd-bus">Bus 08</div>
-                    <div class="bd-driver">Amit Gupta</div>
-                  </div>
-                </div>
-              </td>
-              <td class="loc-cell">
-                <div class="loc-main">Dhanusha Road</div>
-                <div class="loc-sub">6.0 km from school</div>
-              </td>
-              <td class="time-cell">25 min ago<br>08:09 AM</td>
-              <td><span class="pill pill-warning">Warning</span></td>
-              <td><span class="pill pill-acknowledged">Acknowledged</span></td>
-              <td><button class="row-menu">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
-              </button></td>
-            </tr>
-
-            <tr>
-              <td><input type="checkbox" class="chk"></td>
-              <td>
-                <div class="alert-cell">
-                  <div class="alert-cell-ico icon-purple"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div>
-                  <div class="alert-cell-body">
-                    <div class="alert-cell-title">Maintenance Reminder</div>
-                    <div class="alert-cell-sub">Scheduled maintenance due in 3 days</div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="bd-cell">
-                  <div class="bd-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h1a2 2 0 1 0 4 0h6a2 2 0 1 0 4 0h1v-6l-2-5H6L4 11z"/><path d="M4 11h16"/></svg></div>
-                  <div>
-                    <div class="bd-bus">Bus 06</div>
-                    <div class="bd-driver">N/A</div>
-                  </div>
-                </div>
-              </td>
-              <td class="loc-cell">
-                <div class="loc-main">Depot</div>
-                <div class="loc-sub">Bus Depot</div>
-              </td>
-              <td class="time-cell">1 hr ago<br>07:32 AM</td>
-              <td><span class="pill pill-info">Info</span></td>
-              <td><span class="pill pill-resolved">Resolved</span></td>
-              <td><button class="row-menu">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
-              </button></td>
-            </tr>
-
+          <tbody id="alerts-tbody">
+            <!-- Loaded dynamically from API -->
           </tbody>
         </table>
       </div>
 
       <div class="table-footer">
-        <div class="showing">Showing 1 to 6 of 26 alerts</div>
-        <div class="pagination">
-          <button class="pg-btn"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
-          <button class="pg-btn active">1</button>
-          <button class="pg-btn">2</button>
-          <button class="pg-btn">3</button>
-          <button class="pg-btn">4</button>
-          <button class="pg-btn">5</button>
-          <span class="pg-dots">&hellip;</span>
-          <button class="pg-btn">9</button>
-          <button class="pg-btn"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+        <div class="showing" id="alert-range">Showing 0 to 0 of 0 alerts</div>
+        <div class="pagination" id="alert-pagination">
+          <!-- Populated dynamically -->
         </div>
         <div class="rows-per-page">
           Rows per page:
-          <div class="filter-select">
-            10
-            <svg class="chev-down" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
+          <select class="filter-select" id="filter-limit" style="height:32px; padding:0 8px; width:70px;">
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
         </div>
       </div>
     </div>
@@ -452,21 +256,21 @@
             <svg width="150" height="150" viewBox="0 0 150 150">
               <circle cx="75" cy="75" r="60" fill="none" stroke="#eceef2" stroke-width="18"/>
               <circle cx="75" cy="75" r="60" fill="none" stroke="#8b5cf6" stroke-width="18"
-                stroke-dasharray="218.7 377.0" stroke-dashoffset="0" transform="rotate(-90 75 75)" stroke-linecap="round"/>
+                id="donut-info" stroke-dasharray="0 377" stroke-dashoffset="0" transform="rotate(-90 75 75)" stroke-linecap="round"/>
               <circle cx="75" cy="75" r="60" fill="none" stroke="#f59e0b" stroke-width="18"
-                stroke-dasharray="116.9 377.0" stroke-dashoffset="-218.7" transform="rotate(-90 75 75)" stroke-linecap="round"/>
+                id="donut-warning" stroke-dasharray="0 377" stroke-dashoffset="0" transform="rotate(-90 75 75)" stroke-linecap="round"/>
               <circle cx="75" cy="75" r="60" fill="none" stroke="#ef4444" stroke-width="18"
-                stroke-dasharray="45.2 377.0" stroke-dashoffset="-335.6" transform="rotate(-90 75 75)" stroke-linecap="round"/>
+                id="donut-critical" stroke-dasharray="0 377" stroke-dashoffset="0" transform="rotate(-90 75 75)" stroke-linecap="round"/>
             </svg>
             <div class="center-label">
-              <div class="big">26</div>
+              <div class="big" id="donut-total">—</div>
               <div class="small">Total</div>
             </div>
           </div>
           <div class="by-type-legend">
-            <div class="bt-row"><span class="sw" style="background:#ef4444"></span>Critical <span class="bt-val">3 (12%)</span></div>
-            <div class="bt-row"><span class="sw" style="background:#f59e0b"></span>Warning <span class="bt-val">8 (31%)</span></div>
-            <div class="bt-row"><span class="sw" style="background:#8b5cf6"></span>Information <span class="bt-val">15 (58%)</span></div>
+            <div class="bt-row"><span class="sw" style="background:#ef4444"></span>Critical <span class="bt-val" id="legend-critical">0</span></div>
+            <div class="bt-row"><span class="sw" style="background:#f59e0b"></span>Warning <span class="bt-val" id="legend-warning">0</span></div>
+            <div class="bt-row"><span class="sw" style="background:#8b5cf6"></span>Information <span class="bt-val" id="legend-info">0</span></div>
           </div>
         </div>
       </div>
@@ -517,53 +321,9 @@
         <div class="card-head">
           <h3>Recent Alert Activity</h3>
         </div>
-        <div class="activity-timeline">
-
-          <div class="at-item">
-            <div class="at-line">
-              <span class="at-dot" style="background:#ef4444;"></span>
-              <span class="at-connector"></span>
-            </div>
-            <div class="at-body">
-              <div class="at-title">Driver drowsiness detected on Bus 04</div>
-              <div class="at-time">2 min ago</div>
-            </div>
-          </div>
-
-          <div class="at-item">
-            <div class="at-line">
-              <span class="at-dot" style="background:#f59e0b;"></span>
-              <span class="at-connector"></span>
-            </div>
-            <div class="at-body">
-              <div class="at-title">High speed alert on Bus 07</div>
-              <div class="at-time">8 min ago</div>
-            </div>
-          </div>
-
-          <div class="at-item">
-            <div class="at-line">
-              <span class="at-dot" style="background:#8b5cf6;"></span>
-              <span class="at-connector"></span>
-            </div>
-            <div class="at-body">
-              <div class="at-title">Bus 02 approaching school</div>
-              <div class="at-time">12 min ago</div>
-            </div>
-          </div>
-
-          <div class="at-item">
-            <div class="at-line">
-              <span class="at-dot" style="background:#ef4444;"></span>
-            </div>
-            <div class="at-body">
-              <div class="at-title">Emergency button pressed on Bus 01</div>
-              <div class="at-time">18 min ago</div>
-            </div>
-          </div>
-
+        <div class="activity-timeline" id="activity-timeline">
+          <!-- Loaded dynamically from top 4 alerts -->
         </div>
-        <a class="see-all" href="#">View all activity &rarr;</a>
       </div>
 
     </div>
@@ -571,5 +331,10 @@
   </main>
 </div>
 
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="../script/api.js"></script>
+  <script src="../script/toast.js"></script>
+  <script src="../script/auth.js"></script>
+  <script src="../script/alerts.js"></script>
 </body>
 </html>

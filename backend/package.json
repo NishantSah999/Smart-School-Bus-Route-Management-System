@@ -1,7 +1,7 @@
 {
   "name": "smartbus-backend",
   "version": "1.0.0",
-  "description": "SmartBus — Smart School Bus Route Management System (backend API)",
+  "description": "SmartBus \u2014 Smart School Bus Route Management System (backend API)",
   "type": "commonjs",
   "main": "server.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "dev": "node --watch server.js",
     "migrate": "node migrations/run.js",
     "seed": "node seeds/seed.js",
-    "test": "node --test tests/"
+    "test": "node --test tests/*.test.js"
   },
   "engines": {
     "node": ">=18"
@@ -27,5 +27,8 @@
     "socket.io": "^4.7.5",
     "zod": "^3.23.8"
   },
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "socket.io-client": "^4.8.3"
+  }
 }
